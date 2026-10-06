@@ -1,11 +1,12 @@
 /**
- * ICHITAN OAT MILK — CEO Strategic Pitch & Launch Portal
+ * ICHITAN OAT MILK 230ml — CEO Strategic Pitch & 100M Launch Portal
  * Master Application Controller & Interactive Logic
+ * Aligned with New Brief: 230ml, 8฿ COGS, 100M THB Target, Original Oat & Oat+Almond
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Web Audio Synthesizer (Google Stitch Sound Design - Zero External Files)
+  // Web Audio Synthesizer (Zero External Audio Files)
   let soundEnabled = true;
   let audioCtx = null;
   function playUiSound(type = 'click') {
@@ -19,15 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
       gain.connect(audioCtx.destination);
       const now = audioCtx.currentTime;
       if (type === 'click') {
-        osc.frequency.setValueAtTime(600, now);
-        osc.frequency.exponentialRampToValueAtTime(300, now + 0.04);
+        osc.frequency.setValueAtTime(580, now);
+        osc.frequency.exponentialRampToValueAtTime(320, now + 0.04);
         gain.gain.setValueAtTime(0.08, now);
         gain.gain.exponentialRampToValueAtTime(0.005, now + 0.04);
         osc.start(now);
         osc.stop(now + 0.04);
       } else if (type === 'pop') {
         osc.frequency.setValueAtTime(450, now);
-        osc.frequency.exponentialRampToValueAtTime(900, now + 0.06);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.06);
         gain.gain.setValueAtTime(0.1, now);
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.06);
         osc.start(now);
@@ -44,115 +45,75 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 1. 3D PACKAGING VIEWER & FLAVOR SWITCHER
+  // 1. FLAVOR & HERO PACKSHOT LOGIC (NEW BRIEF)
   // ==========================================
   const flavors = {
-    plain: {
-      name: "DAILY OAT",
-      sub: "100% Australian Oat Milk",
+    original: {
+      name: "ORIGINAL OAT",
+      sub: "100% Australian Oats 230ml",
       price: "20.-",
       graphic: "🌾",
-      badges: "<span>🌱 0% SUGAR</span> • <span>🥛 LACTOSE FREE</span>",
-      gradient: "linear-gradient(135deg, #FBF8F1 0%, #EED7A1 50%, #C4A468 100%)",
-      capColor: "linear-gradient(180deg, #FF6B00 0%, #CC5200 100%)",
-      brandColor: "#784E1A",
-      nameColor: "#3B2610",
-      fullName: "Daily Original 0% Added Sugar (สูตรจืดธรรมชาติ)",
-      sensory: { sweet: "15%", sweetVal: "1/5", creamy: "85%", creamyVal: "4.5/5", aroma: "70%", aromaVal: "3.5/5", body: "80%", bodyVal: "4/5", kcal: "~70 kcal / 200ml" }
+      badges: "<span>🌱 0% SUGAR</span> • <span>🥛 BETA-GLUCAN</span>",
+      gradient: "linear-gradient(135deg, #FDFBF7 0%, #EED7A1 50%, #C4A468 100%)",
+      capColor: "linear-gradient(180deg, #D97706 0%, #92400E 100%)",
+      photoSrc: "assets/generated/original-oat-230ml.jpg",
+      fullName: "1) Original Oat 230ml — ข้าวโอ๊ตออสเตรเลียแท้ ไม่เติมน้ำตาลทราย",
+      sensory: { sweet: "20%", sweetVal: "1.5/5", creamy: "88%", creamyVal: "4.5/5", aroma: "75%", aromaVal: "4/5", body: "82%", bodyVal: "4.2/5", kcal: "~75 kcal / 230ml" }
     },
-    creamy: {
-      name: "CREAMY OAT",
-      sub: "Rich & Smooth Texture",
-      price: "20.-",
-      graphic: "🥛",
-      badges: "<span>✨ CALCIUM HIGH</span> • <span>🌾 BETA-GLUCAN</span>",
-      gradient: "linear-gradient(135deg, #FFF6E5 0%, #E0BA79 50%, #9C7238 100%)",
-      capColor: "linear-gradient(180deg, #E5A93C 0%, #B45309 100%)",
-      brandColor: "#6B4416",
-      nameColor: "#2C1A06",
-      fullName: "Daily Creamy Classic (สูตรคลาสสิกกลมกล่อม)",
-      sensory: { sweet: "40%", sweetVal: "2/5", creamy: "95%", creamyVal: "5/5", aroma: "75%", aromaVal: "4/5", body: "85%", bodyVal: "4.5/5", kcal: "~85 kcal / 200ml" }
+    almond: {
+      name: "OAT + ALMOND",
+      sub: "Roasted California Almond 230ml",
+      price: "22.-",
+      graphic: "🌰",
+      badges: "<span>✨ VITAMIN E 50%</span> • <span>🥜 นัวคูณสอง</span>",
+      gradient: "linear-gradient(135deg, #FFF7ED 0%, #EA580C 50%, #9A3412 100%)",
+      capColor: "linear-gradient(180deg, #C2410C 0%, #7C2D12 100%)",
+      photoSrc: "assets/generated/oat-almond-230ml.jpg",
+      fullName: "2) Oat + Almond Blend 230ml — โอ๊ตผสานอัลมอนด์คั่ว นัวเข้มข้นระดับบาริสต้า",
+      sensory: { sweet: "25%", sweetVal: "2/5", creamy: "95%", creamyVal: "5/5", aroma: "92%", aromaVal: "4.8/5", body: "90%", bodyVal: "4.6/5", kcal: "~95 kcal / 230ml" }
     },
-    matcha: {
-      name: "MATCHA OAT",
-      sub: "Kyoto Uji Green Tea",
-      price: "25.-",
-      graphic: "🍵",
-      badges: "<span>🍃 REAL TEA 100%</span> • <span>☕ ANTIOXIDANT</span>",
-      gradient: "linear-gradient(135deg, #E8F5E9 0%, #2D6A4F 60%, #1B4332 100%)",
-      capColor: "linear-gradient(180deg, #10B981 0%, #047857 100%)",
-      brandColor: "#1B4332",
-      nameColor: "#FFFFFF",
-      fullName: "Uji Matcha Oat Latte (มัทฉะโอ๊ตมิลค์เกียวโต)",
-      sensory: { sweet: "25%", sweetVal: "1.5/5", creamy: "75%", creamyVal: "3.8/5", aroma: "95%", aromaVal: "5/5", body: "75%", bodyVal: "3.8/5", kcal: "~95 kcal / 250ml" }
-    },
-    hojicha: {
-      name: "HOJICHA OAT",
-      sub: "Slow Roasted Japanese Tea",
-      price: "25.-",
-      graphic: "🍂",
-      badges: "<span>🔥 ROASTED AROMA</span> • <span>💤 LOW CAFFEINE</span>",
-      gradient: "linear-gradient(135deg, #F5EBE6 0%, #8B5A2B 60%, #4A2810 100%)",
-      capColor: "linear-gradient(180deg, #A26B38 0%, #5E3917 100%)",
-      brandColor: "#4A2810",
-      nameColor: "#FFFFFF",
-      fullName: "Roasted Hojicha Oat (โฮจิฉะคั่วหอมกรุ่น)",
-      sensory: { sweet: "20%", sweetVal: "1.5/5", creamy: "70%", creamyVal: "3.5/5", aroma: "100%", aromaVal: "5/5", body: "80%", bodyVal: "4/5", kcal: "~90 kcal / 250ml" }
-    },
-    choco: {
-      name: "DARK COCOA",
-      sub: "Belgian 70% Dark Cacao",
-      price: "25.-",
-      graphic: "🍫",
-      badges: "<span>⚡ CLEAN ENERGY</span> • <span>🖤 GUILT-FREE</span>",
-      gradient: "linear-gradient(135deg, #EFEBE9 0%, #4E342E 60%, #211512 100%)",
-      capColor: "linear-gradient(180deg, #F43F5E 0%, #9F1239 100%)",
-      brandColor: "#271612",
-      nameColor: "#FFFFFF",
-      fullName: "Belgian Dark Cocoa Oat (ดาร์กช็อกโกแลตเข้มข้น 70%)",
-      sensory: { sweet: "50%", sweetVal: "2.5/5", creamy: "90%", creamyVal: "4.5/5", aroma: "90%", aromaVal: "4.5/5", body: "95%", bodyVal: "5/5", kcal: "~110 kcal / 260ml" }
+    duo: {
+      name: "DUO LAUNCH",
+      sub: "Everyday Goodness 230ml",
+      price: "20-22.-",
+      graphic: "🌾🌰",
+      badges: "<span>🎯 100M THB TARGET</span> • <span>🏪 14,000 7-ELEVEN</span>",
+      gradient: "linear-gradient(135deg, #FFFBEB 0%, #D97706 50%, #B45309 100%)",
+      capColor: "linear-gradient(180deg, #EA580C 0%, #9A3412 100%)",
+      photoSrc: "assets/generated/duo-launch-banner.jpg",
+      fullName: "Duo Launch Portfolio — 2 รสชาติคู่บุกตู้แช่ 7-Eleven ทั่วประเทศ",
+      sensory: { sweet: "22%", sweetVal: "1.8/5", creamy: "92%", creamyVal: "4.8/5", aroma: "85%", aromaVal: "4.5/5", body: "86%", bodyVal: "4.4/5", kcal: "75-95 kcal / 230ml" }
     }
   };
 
-  const heroPackBody = document.getElementById('heroPackBody');
-  const heroPackCap = document.getElementById('heroPackCap');
-  const heroPackName = document.getElementById('heroPackName');
-  const heroPackSub = document.getElementById('heroPackSub');
-  const heroPackGraphic = document.getElementById('heroPackGraphic');
-  const heroPackBadges = document.getElementById('heroPackBadges');
-  const heroPackPrice = document.getElementById('heroPackPrice');
+  const heroPhotoImg = document.getElementById('heroPhotoImg');
+  const heroPhotoStage = document.getElementById('heroPhotoStage');
+  const heroPack3d = document.getElementById('heroPack3d');
+  const viewPhotoBtn = document.getElementById('viewPhotoBtn');
+  const view3dBtn = document.getElementById('view3dBtn');
   const flavorActiveName = document.getElementById('flavorActiveName');
   const colorDots = document.querySelectorAll('.color-dot');
-  const heroPack3d = document.getElementById('heroPack3d');
 
-  function updatePackFlavor(flavorKey) {
-    const f = flavors[flavorKey];
+  // Sensory metric elements
+  const barSweet = document.getElementById('barSweet');
+  const valSweet = document.getElementById('valSweet');
+  const barCreamy = document.getElementById('barCreamy');
+  const valCreamy = document.getElementById('valCreamy');
+  const barAroma = document.getElementById('barAroma');
+  const valAroma = document.getElementById('valAroma');
+  const barBody = document.getElementById('barBody');
+  const valBody = document.getElementById('valBody');
+  const flavorKcal = document.getElementById('flavorKcal');
+
+  function updateFlavor(key) {
+    const f = flavors[key];
     if (!f) return;
 
-    heroPackBody.style.background = f.gradient;
-    heroPackCap.style.background = f.capColor;
-    heroPackName.textContent = f.name;
-    heroPackName.style.color = f.nameColor;
-    heroPackSub.textContent = f.sub;
-    heroPackGraphic.textContent = f.graphic;
-    heroPackBadges.innerHTML = f.badges;
-    heroPackPrice.textContent = f.price;
     flavorActiveName.textContent = f.fullName;
-    if (heroPhotoImg && flavorPhotos[flavorKey]) {
-      heroPhotoImg.src = flavorPhotos[flavorKey];
-    }
+    if (heroPhotoImg) heroPhotoImg.src = f.photoSrc;
 
+    // Update sensory meters
     if (f.sensory) {
-      const barSweet = document.getElementById('barSweet');
-      const valSweet = document.getElementById('valSweet');
-      const barCreamy = document.getElementById('barCreamy');
-      const valCreamy = document.getElementById('valCreamy');
-      const barAroma = document.getElementById('barAroma');
-      const valAroma = document.getElementById('valAroma');
-      const barBody = document.getElementById('barBody');
-      const valBody = document.getElementById('valBody');
-      const flavorKcal = document.getElementById('flavorKcal');
-      
       if (barSweet) barSweet.style.width = f.sensory.sweet;
       if (valSweet) valSweet.textContent = f.sensory.sweetVal;
       if (barCreamy) barCreamy.style.width = f.sensory.creamy;
@@ -165,133 +126,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     colorDots.forEach(dot => {
-      dot.classList.toggle('active', dot.dataset.flavor === flavorKey);
+      dot.classList.toggle('active', dot.dataset.flavor === key);
     });
   }
 
   colorDots.forEach(dot => {
     dot.addEventListener('click', () => {
       playUiSound('pop');
-      updatePackFlavor(dot.dataset.flavor);
+      updateFlavor(dot.dataset.flavor);
     });
   });
 
-  // 3D Parallax Tilt Effect on hover
-  const packStage = document.querySelector('.pack-render-stage');
-  if (packStage && heroPack3d) {
-    packStage.addEventListener('mousemove', (e) => {
-      const rect = packStage.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      const rotateY = (x / rect.width) * 45;
-      const rotateX = -(y / rect.height) * 35;
-      heroPack3d.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-      heroPack3d.style.animation = 'none';
-    });
-
-    packStage.addEventListener('mouseleave', () => {
-      heroPack3d.style.transform = '';
-      heroPack3d.style.animation = 'floatBottle 4s ease-in-out infinite alternate';
-    });
-  }
-
-  // Studio Photo vs 3D Interactive Mode Toggle
-  const view3dBtn = document.getElementById('view3dBtn');
-  const viewPhotoBtn = document.getElementById('viewPhotoBtn');
-  const heroPhotoStage = document.getElementById('heroPhotoStage');
-  const heroPhotoImg = document.getElementById('heroPhotoImg');
-
-  const flavorPhotos = {
-    plain: 'assets/generated/daily-oat.jpg',
-    creamy: 'assets/generated/daily-oat.jpg',
-    matcha: 'assets/generated/oat-tea-lab.jpg',
-    hojicha: 'assets/generated/oat-tea-lab.jpg',
-    choco: 'assets/generated/oat-pop.jpg'
-  };
-
-  if (view3dBtn && viewPhotoBtn && heroPhotoStage) {
-    view3dBtn.addEventListener('click', () => {
-      view3dBtn.classList.add('active');
-      viewPhotoBtn.classList.remove('active');
-      heroPhotoStage.style.display = 'none';
-      if (heroPack3d) heroPack3d.style.display = 'block';
-      playUiSound('pop');
-      showToast('สลับสู่โหมด 3D Interactive Simulation', '🧊');
-    });
-
+  // 3D vs Photo View Toggle
+  if (viewPhotoBtn && view3dBtn && heroPhotoStage && heroPack3d) {
     viewPhotoBtn.addEventListener('click', () => {
       viewPhotoBtn.classList.add('active');
       view3dBtn.classList.remove('active');
       heroPhotoStage.style.display = 'block';
-      if (heroPack3d) heroPack3d.style.display = 'none';
-      playUiSound('chime');
-      showToast('สลับสู่โหมดภาพถ่าย Commercial Studio Shoot', '📸');
+      heroPack3d.style.display = 'none';
+      playUiSound('click');
+      showToast('สลับสู่มุมมองภาพถ่าย Commercial Studio Photo 230ml', '📸');
+    });
+
+    view3dBtn.addEventListener('click', () => {
+      view3dBtn.classList.add('active');
+      viewPhotoBtn.classList.remove('active');
+      heroPhotoStage.style.display = 'none';
+      heroPack3d.style.display = 'block';
+      playUiSound('click');
+      showToast('สลับสู่โหมด 3D Interactive Simulation', '🧊');
     });
   }
 
   // ==========================================
-  // 2. CONCEPT TABS NAVIGATION
+  // 2. CHARTS RENDERING (CANVAS)
   // ==========================================
-  const conceptTabs = document.querySelectorAll('.concept-tab-btn');
-  const conceptPanels = {
-    'concept-a': document.getElementById('concept-a-panel'),
-    'concept-b': document.getElementById('concept-b-panel'),
-    'concept-c': document.getElementById('concept-c-panel')
-  };
-
-  conceptTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      conceptTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      const targetConcept = tab.dataset.concept;
-      Object.keys(conceptPanels).forEach(key => {
-        if (conceptPanels[key]) {
-          conceptPanels[key].style.display = (key === targetConcept) ? 'block' : 'none';
-        }
-      });
-
-      // Sync 3D pack preview to match concept theme
-      if (targetConcept === 'concept-a') updatePackFlavor('plain');
-      if (targetConcept === 'concept-b') updatePackFlavor('matcha');
-      if (targetConcept === 'concept-c') updatePackFlavor('choco');
-    });
-  });
-
-
-  // ==========================================
-  // 3. CANVAS-BASED CHARTS (ZERO DEPENDENCY)
-  // ==========================================
-
-  // Chart 1: Market Growth Projections (2024 - 2028F)
   function renderMarketGrowthChart() {
     const canvas = document.getElementById('marketGrowthChart');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     const dpr = window.devicePixelRatio || 1;
-
     const width = canvas.parentElement.clientWidth;
-    const height = 280;
+    const height = 250;
     canvas.width = width * dpr;
     canvas.height = height * dpr;
     canvas.style.width = width + 'px';
     canvas.style.height = height + 'px';
     ctx.scale(dpr, dpr);
 
-    const years = ['2024', '2025', '2026 (Launch)', '2027F', '2028F'];
-    const oatMilkData = [650, 1100, 2200, 3600, 5200]; // Rapid CAGR +45%
-    const soyMilkData = [12000, 12400, 12600, 12700, 12800]; // Maturing
-    const maxVal = 18000;
+    const data = [
+      { year: "2024", soy: 17200, oat: 1781 },
+      { year: "2025F", soy: 17500, oat: 2600 },
+      { year: "2026F", soy: 17800, oat: 4200 },
+      { year: "2027F", soy: 18000, oat: 6100 },
+      { year: "2028F", soy: 18200, oat: 8500 }
+    ];
 
-    const padLeft = 50;
+    const padLeft = 45;
     const padRight = 20;
     const padTop = 30;
-    const padBottom = 40;
+    const padBottom = 35;
     const chartW = width - padLeft - padRight;
     const chartH = height - padTop - padBottom;
+    const maxVal = 20000;
 
     // Draw grid lines
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.06)';
     ctx.lineWidth = 1;
     for (let i = 0; i <= 4; i++) {
       const y = padTop + (chartH / 4) * i;
@@ -300,77 +200,49 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.lineTo(width - padRight, y);
       ctx.stroke();
 
-      // Label
+      const val = Math.round(maxVal - (maxVal / 4) * i);
       ctx.fillStyle = '#64748B';
       ctx.font = '10px Kanit, sans-serif';
       ctx.textAlign = 'right';
-      const labelVal = Math.round(maxVal - (maxVal / 4) * i);
-      ctx.fillText(labelVal.toLocaleString() + ' M', padLeft - 8, y + 4);
+      ctx.fillText(`${val / 1000}k`, padLeft - 8, y + 3);
     }
 
-    // Draw Bars for each year
-    const barGroupW = chartW / years.length;
-    const barW = Math.min(28, barGroupW * 0.35);
+    const colW = chartW / data.length;
+    data.forEach((d, i) => {
+      const x = padLeft + colW * i + colW / 2;
 
-    years.forEach((year, i) => {
-      const centerX = padLeft + barGroupW * i + barGroupW / 2;
-
-      // Soy Milk Bar (muted blue)
-      const soyVal = soyMilkData[i];
-      const soyH = (soyVal / maxVal) * chartH;
-      const soyY = padTop + chartH - soyH;
-      ctx.fillStyle = 'rgba(100, 116, 139, 0.5)';
+      // Soy bar
+      const soyH = (d.soy / maxVal) * chartH;
+      ctx.fillStyle = 'rgba(100, 116, 139, 0.4)';
       ctx.beginPath();
-      ctx.roundRect(centerX - barW - 2, soyY, barW, soyH, [4, 4, 0, 0]);
+      ctx.roundRect(x - 22, padTop + chartH - soyH, 18, soyH, [4, 4, 0, 0]);
       ctx.fill();
 
-      // Oat Milk Bar (Golden Ichitan Highlight)
-      const oatVal = oatMilkData[i];
-      const oatH = (oatVal / maxVal) * chartH;
-      const oatY = padTop + chartH - oatH;
-      const grad = ctx.createLinearGradient(0, oatY, 0, oatY + oatH);
-      grad.addColorStop(0, '#FF7A00');
-      grad.addColorStop(1, '#E5A93C');
+      // Oat bar (Highlight)
+      const oatH = (d.oat / maxVal) * chartH;
+      const grad = ctx.createLinearGradient(0, padTop + chartH - oatH, 0, padTop + chartH);
+      grad.addColorStop(0, '#F59E0B');
+      grad.addColorStop(1, '#D97706');
       ctx.fillStyle = grad;
       ctx.beginPath();
-      ctx.roundRect(centerX + 2, oatY, barW, oatH, [4, 4, 0, 0]);
+      ctx.roundRect(x + 2, padTop + chartH - oatH, 18, oatH, [4, 4, 0, 0]);
       ctx.fill();
 
-      // Value label on oat milk
-      ctx.fillStyle = '#FCD34D';
-      ctx.font = 'bold 10px Kanit, sans-serif';
+      // Year label
+      ctx.fillStyle = '#94A3B8';
+      ctx.font = '11px Prompt, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText(oatVal.toLocaleString(), centerX + 2 + barW / 2, oatY - 6);
-
-      // X-Axis labels
-      ctx.fillStyle = (i === 2) ? '#E5A93C' : '#94A3B8';
-      ctx.font = (i === 2) ? 'bold 11px Prompt, sans-serif' : '11px Kanit, sans-serif';
-      ctx.fillText(year, centerX, height - 12);
+      ctx.fillText(d.year, x, padTop + chartH + 20);
     });
-
-    // Legend
-    ctx.fillStyle = 'rgba(100, 116, 139, 0.6)';
-    ctx.fillRect(padLeft, 10, 10, 10);
-    ctx.fillStyle = '#94A3B8';
-    ctx.font = '11px Kanit, sans-serif';
-    ctx.textAlign = 'left';
-    ctx.fillText('นมถั่วเหลืองแบบเดิม (Soy Milk)', padLeft + 16, 19);
-
-    ctx.fillStyle = '#E5A93C';
-    ctx.fillRect(padLeft + 180, 10, 10, 10);
-    ctx.fillStyle = '#FCD34D';
-    ctx.fillText('⭐ นมข้าวโอ๊ต (Oat Milk: เติบโต +45% YoY)', padLeft + 196, 19);
   }
 
-  // Chart 2: Price-per-100ml Benchmark Comparison
   function renderPriceBenchmarkChart() {
     const canvas = document.getElementById('priceBenchmarkChart');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     const dpr = window.devicePixelRatio || 1;
-
     const width = canvas.parentElement.clientWidth;
-    const height = 280;
+    const height = 250;
     canvas.width = width * dpr;
     canvas.height = height * dpr;
     canvas.style.width = width + 'px';
@@ -378,57 +250,53 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.scale(dpr, dpr);
 
     const brands = [
-      { name: "Oatly (นำเข้า)", price100ml: 18.0, color: "#64748B", note: "125฿/กล่องใหญ่" },
-      { name: "137 Degrees", price100ml: 17.8, color: "#64748B", note: "32฿/180ml" },
-      { name: "Goodmate", price100ml: 16.7, color: "#94A3B8", note: "30฿/180ml" },
-      { name: "Lactasoy (ถั่วเหลือง)", price100ml: 4.8, color: "#475569", note: "12฿/250ml" },
-      { name: "⭐ ICHITAN OAT", price100ml: 9.5, color: "#E5A93C", highlight: true, note: "20-22฿/220ml" }
+      { name: "Oatly (นำเข้า)", price100ml: 16.8, color: "#64748B" },
+      { name: "137 Degrees", price100ml: 16.1, color: "#64748B" },
+      { name: "Goodmate", price100ml: 15.7, color: "#94A3B8" },
+      { name: "UFC Velvet", price100ml: 12.8, color: "#94A3B8" },
+      { name: "⭐ ICHITAN (22฿)", price100ml: 9.6, color: "#F59E0B", highlight: true },
+      { name: "⭐ ICHITAN (20฿)", price100ml: 8.7, color: "#EA580C", highlight: true }
     ];
 
-    const padLeft = 140;
-    const padRight = 70;
-    const padTop = 30;
-    const padBottom = 20;
+    const padLeft = 135;
+    const padRight = 65;
+    const padTop = 20;
+    const padBottom = 15;
     const chartW = width - padLeft - padRight;
     const chartH = height - padTop - padBottom;
-    const maxVal = 22;
-
+    const maxVal = 20;
     const rowH = chartH / brands.length;
 
     brands.forEach((b, i) => {
       const y = padTop + rowH * i + rowH / 2;
-      const barH = 22;
+      const barH = 18;
       const barW = (b.price100ml / maxVal) * chartW;
 
-      // Brand Name label on left
-      ctx.fillStyle = b.highlight ? '#FCD34D' : '#E2E8F0';
-      ctx.font = b.highlight ? 'bold 12px Prompt, sans-serif' : '11px Kanit, sans-serif';
+      ctx.fillStyle = b.highlight ? '#FDE68A' : '#CBD5E1';
+      ctx.font = b.highlight ? 'bold 11px Prompt, sans-serif' : '10.5px Kanit, sans-serif';
       ctx.textAlign = 'right';
-      ctx.fillText(b.name, padLeft - 15, y + 4);
+      ctx.fillText(b.name, padLeft - 12, y + 4);
 
-      // Horizontal Bar
       if (b.highlight) {
         const grad = ctx.createLinearGradient(padLeft, 0, padLeft + barW, 0);
-        grad.addColorStop(0, '#FF6B00');
-        grad.addColorStop(1, '#E5A93C');
+        grad.addColorStop(0, '#EA580C');
+        grad.addColorStop(1, '#F59E0B');
         ctx.fillStyle = grad;
       } else {
         ctx.fillStyle = b.color;
       }
 
       ctx.beginPath();
-      ctx.roundRect(padLeft, y - barH / 2, barW, barH, [0, 6, 6, 0]);
+      ctx.roundRect(padLeft, y - barH / 2, barW, barH, [0, 5, 5, 0]);
       ctx.fill();
 
-      // Value label on right of bar
-      ctx.fillStyle = b.highlight ? '#FCD34D' : '#94A3B8';
-      ctx.font = 'bold 11px Prompt, sans-serif';
+      ctx.fillStyle = b.highlight ? '#FDE68A' : '#94A3B8';
+      ctx.font = 'bold 10.5px Prompt, sans-serif';
       ctx.textAlign = 'left';
       ctx.fillText(b.price100ml.toFixed(1) + ' ฿/100ml', padLeft + barW + 8, y + 4);
     });
   }
 
-  // Initial draw & resize listener
   renderMarketGrowthChart();
   renderPriceBenchmarkChart();
   window.addEventListener('resize', () => {
@@ -436,18 +304,17 @@ document.addEventListener('DOMContentLoaded', () => {
     renderPriceBenchmarkChart();
   });
 
-
   // ==========================================
-  // 4. INTERACTIVE CEO FINANCIAL SIMULATOR
+  // 3. P&L FINANCIAL SIMULATOR (100M TARGET, COGS 8฿)
   // ==========================================
   const sliderPrice = document.getElementById('sliderPrice');
-  const sliderStores = document.getElementById('sliderStores');
   const sliderVelocity = document.getElementById('sliderVelocity');
+  const sliderStores = document.getElementById('sliderStores');
   const sliderMultiplier = document.getElementById('sliderMultiplier');
 
   const valPrice = document.getElementById('valPrice');
-  const valStores = document.getElementById('valStores');
   const valVelocity = document.getElementById('valVelocity');
+  const valStores = document.getElementById('valStores');
   const valMultiplier = document.getElementById('valMultiplier');
 
   const kpiRevenue = document.getElementById('kpiRevenue');
@@ -455,123 +322,126 @@ document.addEventListener('DOMContentLoaded', () => {
   const kpiVolume = document.getElementById('kpiVolume');
   const kpiGrossProfit = document.getElementById('kpiGrossProfit');
   const kpiMarginPercent = document.getElementById('kpiMarginPercent');
-  const kpiDaily711 = document.getElementById('kpiDaily711');
+  const kpiMarketing = document.getElementById('kpiMarketing');
   const kpiEbitda = document.getElementById('kpiEbitda');
 
   function updateFinancialSimulator() {
     const price = parseFloat(sliderPrice.value);
+    const velocity = parseFloat(sliderVelocity.value);
     const stores = parseInt(sliderStores.value, 10);
-    const velocity = parseInt(sliderVelocity.value, 10);
     const multiplier = parseInt(sliderMultiplier.value, 10);
 
-    // Update Slider Value Texts
     valPrice.textContent = `${price} บาท`;
+    valVelocity.textContent = `${velocity.toFixed(1)} ขวด/วัน`;
     valStores.textContent = `${stores.toLocaleString()} สาขา`;
-    valVelocity.textContent = `${velocity} กล่อง/วัน`;
     valMultiplier.textContent = `+${multiplier}% ของยอด 7-11`;
 
-    // Calculations
-    const dailyUnits711 = stores * velocity;
-    const totalDailyUnits = dailyUnits711 * (1 + multiplier / 100);
-    const annualVolumeUnits = totalDailyUnits * 365;
-    const annualVolumeMillion = annualVolumeUnits / 1000000;
+    // 7-Eleven daily & annual bottles
+    const daily711 = stores * velocity;
+    const totalDaily = daily711 * (1 + multiplier / 100);
+    const annualBottles = totalDaily * 365;
+    const annualBottlesM = annualBottles / 1000000;
 
-    // Wholesale & Margin Logic:
-    // Retail Price -> Wholesale is ~70% (30% retail margin for modern trade)
-    const wholesalePrice = price * 0.70;
-    // COGS is ~33% of retail price due to high-efficiency Aseptic Cold Line
-    const cogsUnit = price * 0.33;
-    const grossProfitUnit = wholesalePrice - cogsUnit;
-    const grossMarginPercent = (grossProfitUnit / wholesalePrice) * 100;
+    // Financial Model based on Brief:
+    // Retail Price (e.g. 22฿) -> Ex-VAT is ~20.56฿ -> Trade Margin ~31.9% -> Net Invoiced to Ichitan = 14.00฿
+    const wholesaleNetPrice = price * (14.0 / 22.0); // Ratio preserves 14฿ net at 22฿ RSP
+    const cogsUnit = 8.00; // Fixed 8.00 THB COGS per brief
+    const grossProfitUnit = wholesaleNetPrice - cogsUnit;
+    const grossMarginPercent = (grossProfitUnit / wholesaleNetPrice) * 100;
 
-    // Topline Consumer Value & Company Gross Revenue
-    const totalConsumerSpendingMillion = (annualVolumeUnits * price) / 1000000;
-    const ichitanNetWholesaleRevenueMillion = (annualVolumeUnits * wholesalePrice) / 1000000;
-    const grossProfitMillion = (annualVolumeUnits * grossProfitUnit) / 1000000;
+    const netSalesM = (annualBottles * wholesaleNetPrice) / 1000000;
+    const grossProfitM = (annualBottles * grossProfitUnit) / 1000000;
+    const retailValueM = (annualBottles * price) / 1000000;
 
-    // Estimated OPEX (marketing 80M + logistics/sales team 7% of revenue)
-    const opexMillion = 80 + (ichitanNetWholesaleRevenueMillion * 0.07);
-    const ebitdaMillion = Math.max(0, grossProfitMillion - opexMillion);
+    // A&P budget is 18% of net sales
+    const marketingM = netSalesM * 0.18;
+    // Logistics & SG&A is 8% of net sales
+    const sgaM = netSalesM * 0.08;
+    const ebitM = Math.max(0, grossProfitM - marketingM - sgaM);
 
-    // Update KPI UI
-    kpiRevenue.textContent = `${Math.round(totalConsumerSpendingMillion).toLocaleString()} M฿`;
-    kpiRevenueDesc.textContent = `สร้างยอดขายส่งเข้าอิชิตัน ~${Math.round(ichitanNetWholesaleRevenueMillion).toLocaleString()} ล้านบาท/ปี`;
-    
-    kpiVolume.textContent = `${annualVolumeMillion.toFixed(1)} M`;
-    kpiGrossProfit.textContent = `${Math.round(grossProfitMillion).toLocaleString()} M฿`;
-    kpiMarginPercent.textContent = `Gross Margin ~${grossMarginPercent.toFixed(1)}% (สูงกว่าค่าเฉลี่ย FMCG)`;
-    
-    kpiDaily711.textContent = `${Math.round(dailyUnits711).toLocaleString()}`;
-    kpiEbitda.textContent = `${Math.round(ebitdaMillion).toLocaleString()} M฿`;
+    // Update KPIs
+    kpiRevenue.textContent = `${netSalesM.toFixed(1)} M฿`;
+    if (netSalesM >= 100) {
+      kpiRevenueDesc.textContent = `🎉 บรรลุเป้าหมาย 100 ล้านบาท! (มูลค่าขายปลีกหน้าร้าน ~${retailValueM.toFixed(1)} ล้านบาท)`;
+    } else {
+      kpiRevenueDesc.textContent = `ต้องการอีก ${(100 - netSalesM).toFixed(1)} ล้านบาท เพื่อบรรลุเป้าหมาย 100M`;
+    }
+
+    kpiVolume.textContent = `${annualBottlesM.toFixed(1)} M`;
+    kpiGrossProfit.textContent = `${grossProfitM.toFixed(1)} M฿`;
+    kpiMarginPercent.textContent = `Gross Margin ~${grossMarginPercent.toFixed(1)}% (COGS 8.00฿)`;
+    kpiMarketing.textContent = `${marketingM.toFixed(1)} M฿`;
+    kpiEbitda.textContent = `${ebitM.toFixed(1)} M฿`;
   }
 
-  [sliderPrice, sliderStores, sliderVelocity, sliderMultiplier].forEach(el => {
-    if (el) el.addEventListener('input', updateFinancialSimulator);
+  [sliderPrice, sliderVelocity, sliderStores, sliderMultiplier].forEach(sl => {
+    if (sl) sl.addEventListener('input', updateFinancialSimulator);
   });
   updateFinancialSimulator();
 
-
   // ==========================================
-  // 5. EXECUTIVE BOARD VOTING & VERDICT
+  // 4. SHELF PULSE SIMULATION
   // ==========================================
-  const voteBoxes = document.querySelectorAll('.vote-stars-box');
-  const scores = { a: 5, b: 4, c: 3 };
+  const shelfPulseBtn = document.getElementById('shelfPulseBtn');
+  const shelfHeroItem = document.getElementById('shelfHeroItem');
+  const shelfAlmondItem = document.getElementById('shelfAlmondItem');
 
-  voteBoxes.forEach(box => {
-    const concept = box.dataset.concept;
-    const stars = box.querySelectorAll('.star-btn');
+  if (shelfPulseBtn && shelfHeroItem && shelfAlmondItem) {
+    shelfPulseBtn.addEventListener('click', () => {
+      playUiSound('chime');
+      shelfHeroItem.style.transform = 'translateY(-16px) scale(1.12)';
+      shelfHeroItem.style.filter = 'drop-shadow(0 0 20px #EA580C)';
+      shelfAlmondItem.style.transform = 'translateY(-16px) scale(1.12)';
+      shelfAlmondItem.style.filter = 'drop-shadow(0 0 20px #C2410C)';
+      showToast('จำลองมุมมองสะดุดตา: ขวดอิชิตัน 230ml แย่งสายตาตู้แช่เซเว่นได้ทันที!', '🔥');
 
-    stars.forEach(star => {
-      star.addEventListener('click', () => {
-        const score = parseInt(star.dataset.score, 10);
-        scores[concept] = score;
-
-        // Update stars active
-        stars.forEach((s, idx) => {
-          s.classList.toggle('active', idx < score);
-        });
-
-        // Update badge
-        const badge = document.getElementById(`scoreBadge${concept.toUpperCase()}`);
-        if (badge) {
-          if (score === 5) badge.textContent = "5 / 5 ดาว (แนะนำสูงสุด)";
-          else if (score >= 4) badge.textContent = `${score} / 5 ดาว (เฟส 2)`;
-          else badge.textContent = `${score} / 5 ดาว (ทางเลือกลิมิเต็ด)`;
-        }
-
-        recomputeBoardVerdict();
-      });
+      setTimeout(() => {
+        shelfHeroItem.style.transform = '';
+        shelfHeroItem.style.filter = '';
+        shelfAlmondItem.style.transform = '';
+        shelfAlmondItem.style.filter = '';
+      }, 2000);
     });
-  });
+  }
 
-  function recomputeBoardVerdict() {
-    const total = scores.a + scores.b + scores.c;
-    const verdictTitle = document.querySelector('.verdict-title');
-    const verdictText = document.getElementById('verdictText');
+  // ==========================================
+  // 5. THEME SWITCHER (DARK, OAT, MATCHA)
+  // ==========================================
+  const themeDarkBtn = document.getElementById('themeDarkBtn');
+  const themeOatBtn = document.getElementById('themeOatBtn');
+  const themeMatchaBtn = document.getElementById('themeMatchaBtn');
+  const navThemeDarkBtn = document.getElementById('navThemeDarkBtn');
+  const navThemeOatBtn = document.getElementById('navThemeOatBtn');
+  const navThemeMatchaBtn = document.getElementById('navThemeMatchaBtn');
 
-    if (scores.a >= 4 && scores.b >= 4) {
-      verdictTitle.textContent = '🎉 มติที่ประชุม: "อนุมัติเปิดตัวกลยุทธ์ DUAL-LAUNCH (CONCEPT A + B)"';
-      verdictText.innerHTML = 'เห็นชอบให้จัดสรรงบการตลาดก้อนแรก 80 ล้านบาท โดยใช้ <strong>CONCEPT A (Daily Oat 20฿)</strong> บุกเข้า 7-Eleven ยึดหัวหาด Mass Market เป็นตัวหลัก และตามด้วย <strong>CONCEPT B (Oat Tea Lab 25฿)</strong> ในเดือนที่ 3 เพื่อเพิ่มอัตรากำไร';
-    } else if (scores.a === 5) {
-      verdictTitle.textContent = '🎯 มติที่ประชุม: "อนุมัติมุ่งเน้น CONCEPT A (โอ๊ตมิลค์มหาชน 20฿) 100%"';
-      verdictText.innerHTML = 'ให้ความสำคัญสูงสุดกับการสร้างปรากฏการณ์ Mass Disruption ในราคา 20 บาท ยึดเชลฟ์เซเว่น 14,000 สาขาทั่วประเทศ ทุ่มงบการตลาดและกำลังผลิตทั้งหมด';
-    } else {
-      verdictTitle.textContent = '📋 มติที่ประชุม: "อนุมัติศึกษาเพิ่มเติมและทดลองตลาดเฉพาะกลุ่ม (Pilot Test)"';
-      verdictText.innerHTML = 'ดำเนินการทดลองวางจำหน่ายใน 500 สาขาชั้นนำของ กทม. เพื่อเก็บข้อมูล Consumer Feedback และปรับปรุงสูตรก่อนกระจายสินค้าทั่วประเทศ';
+  function setActiveTheme(themeName) {
+    document.body.classList.remove('theme-oat', 'theme-matcha');
+    if (themeName !== 'dark') {
+      document.body.classList.add(`theme-${themeName}`);
     }
+
+    [themeDarkBtn, navThemeDarkBtn].forEach(b => b && b.classList.toggle('active', themeName === 'dark'));
+    [themeOatBtn, navThemeOatBtn].forEach(b => b && b.classList.toggle('active', themeName === 'oat'));
+    [themeMatchaBtn, navThemeMatchaBtn].forEach(b => b && b.classList.toggle('active', themeName === 'matcha'));
+
+    const labels = {
+      dark: '🌑 Dark Luxury (บอร์ดรูมพรีเมียม)',
+      oat: '🌾 Golden Oat (มู้ดคลีนธรรมชาติ)',
+      matcha: '🍵 Kyoto Matcha (มู้ดชาเขียวสดชื่น)'
+    };
+    playUiSound('click');
+    showToast(`เปลี่ยนธีม: ${labels[themeName] || themeName}`, '🎨');
   }
 
-  // Export resolution button
-  const exportBtn = document.getElementById('exportResolutionBtn');
-  if (exportBtn) {
-    exportBtn.addEventListener('click', () => {
-      window.print();
-    });
-  }
-
+  if (themeDarkBtn) themeDarkBtn.addEventListener('click', () => setActiveTheme('dark'));
+  if (themeOatBtn) themeOatBtn.addEventListener('click', () => setActiveTheme('oat'));
+  if (themeMatchaBtn) themeMatchaBtn.addEventListener('click', () => setActiveTheme('matcha'));
+  if (navThemeDarkBtn) navThemeDarkBtn.addEventListener('click', () => setActiveTheme('dark'));
+  if (navThemeOatBtn) navThemeOatBtn.addEventListener('click', () => setActiveTheme('oat'));
+  if (navThemeMatchaBtn) navThemeMatchaBtn.addEventListener('click', () => setActiveTheme('matcha'));
 
   // ==========================================
-  // 6. FULLSCREEN BOARDROOM PITCH DECK MODE
+  // 6. FULLSCREEN PITCH DECK SLIDES (100M BRIEF)
   // ==========================================
   const deckModal = document.getElementById('deckModal');
   const deckBtn = document.getElementById('deckBtn');
@@ -584,135 +454,123 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentSlide = 0;
   const slides = [
     {
-      title: "1. The Billion-Baht White Space & Opportunity",
+      title: "1. The Business Challenge & Market Opportunity",
       badge: "EXECUTIVE BRIEF",
       content: `
-        <h2 style="font-size: 2.2rem; color: #E5A93C; margin-bottom: 1rem;">ช่องว่างตลาดนมพืชไทย: โอกาสทองของอิชิตัน</h2>
-        <p style="font-size: 1.15rem; color: #CBD5E1; margin-bottom: 1.5rem;">
-          ตลาดนมพร้อมดื่มไทยมีมูลค่า <strong>65,000 ล้านบาท</strong> โดยนมวัวเริ่มชะลอตัว ขณะที่กลุ่มนมจากพืชเติบโตกว่า <strong>+45% YoY</strong> เพราะคนไทย 90% มีภาวะย่อยแลคโตสผิดปกติ
+        <h2 style="font-size: 2.2rem; color: #F59E0B; margin-bottom: 1rem;">ช่องว่างตลาดนมพืชไทยสู่เป้าหมาย 100 ล้านบาท</h2>
+        <p style="font-size: 1.1rem; color: #CBD5E1; margin-bottom: 1.5rem;">
+          ตลาดนมพืชที่ไม่ใช่นมถั่วเหลืองเติบโตกว่า <strong>+45% YoY</strong> สู่ 4,200 ล้านบาทในปี 2026 คนไทยกว่า <strong>90% แพ้นมวัว</strong> แต่นมโอ๊ตปัจจุบันขายแพงเกินไป (28–42฿)
         </p>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem;">
-          <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border-left: 3px solid #E5A93C;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
+          <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border-left: 3px solid #F59E0B;">
             <h4 style="color:#FFF; margin-bottom:6px;">จุดอ่อนคู่แข่ง</h4>
-            <p style="font-size:0.9rem; color:#94A3B8;">Oatly, Goodmate ขายแพง (30฿ - 125฿) กระจุกตัวแค่คาเฟ่และคนเมือง</p>
+            <p style="font-size:0.88rem; color:#94A3B8;">Goodmate (28฿/180ml), 137 Degrees (30฿/180ml) กล่องเล็ก ราคาสูง ดื่มไม่พออิ่ม</p>
           </div>
           <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border-left: 3px solid #10B981;">
             <h4 style="color:#FFF; margin-bottom:6px;">จุดแข็งอิชิตัน</h4>
-            <p style="font-size:0.9rem; color:#94A3B8;">โรงงาน Aseptic Cold Filling กำลังผลิตมหาศาล ต้นทุนต่ำกว่าคู่แข่ง 35%</p>
+            <p style="font-size:0.88rem; color:#94A3B8;">ขวด 230ml (+28% ปริมาณ) เทคโนโลยี Aseptic Cold Line ต้นทุน COGS คุมได้ที่ ~8.00฿</p>
           </div>
-          <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border-left: 3px solid #FF6B00;">
-            <h4 style="color:#FFF; margin-bottom:6px;">หมัดเด็ดช่องทางขาย</h4>
-            <p style="font-size:0.9rem; color:#94A3B8;">เข้าถึง 14,000+ เซเว่น และร้านโชห่วยทั่วประเทศได้ตั้งแต่วันแรก</p>
+          <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border-left: 3px solid #EA580C;">
+            <h4 style="color:#FFF; margin-bottom:6px;">เครือข่ายกระจายสินค้า</h4>
+            <p style="font-size:0.88rem; color:#94A3B8;">14,000 ร้าน 7-Eleven ทั่วประเทศ ต้องการยอดขายเพียง 1.4 ขวด/วัน/สาขา</p>
           </div>
         </div>
       `
     },
     {
-      title: "2. The Big Disruption: Oat Milk at 20 THB",
-      badge: "GAME CHANGER",
+      title: "2. The 2 Hero Launch SKUs (230ml PET)",
+      badge: "PRODUCT SPECIFICATIONS",
       content: `
-        <h2 style="font-size: 2.2rem; color: #E5A93C; margin-bottom: 1rem;">ทลายกำแพงราคา: โอ๊ตมิลค์ 20 บาท ทุกเซเว่น</h2>
-        <p style="font-size: 1.15rem; color: #CBD5E1; margin-bottom: 1.5rem;">
-          เราไม่ได้แข่งเพื่อเป็นนมโอ๊ตเฉพาะกลุ่ม แต่เรากำลังจะ <strong>"Democratize Oat Milk"</strong> ให้กลายเป็นเครื่องดื่มประจำวันของคนไทย 70 ล้านคน
+        <h2 style="font-size: 2.2rem; color: #F59E0B; margin-bottom: 1rem;">2 รสชาติหลัก: Original Oat & Oat + Almond</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+          <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid #D97706;">
+            <h3 style="color:#F59E0B; font-size:1.3rem;">1) Original Oat (230ml)</h3>
+            <p style="color:#CBD5E1; font-size:0.9rem; margin:8px 0;">ข้าวโอ๊ตออสเตรเลียแท้ 100% สกัดเอนไซม์ธรรมชาติ ไม่เติมน้ำตาลทราย</p>
+            <div style="color:#94A3B8; font-size:0.85rem;">• Beta-Glucan 1,000 mg • แคลเซียมสูง 30% • 0% Lactose</div>
+            <div style="margin-top:12px; font-weight:700; color:#FFF;">ราคาแนะนำ: 20 – 22 บาท</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid #C2410C;">
+            <h3 style="color:#FB923C; font-size:1.3rem;">2) Oat + Almond Blend (230ml)</h3>
+            <p style="color:#CBD5E1; font-size:0.9rem; margin:8px 0;">โอ๊ตผสานอัลมอนด์คั่วแคลิฟอร์เนีย นัวคูณสอง เข้มข้นสไตล์บาริสต้า</p>
+            <div style="color:#94A3B8; font-size:0.85rem;">• วิตามินอีสูง 50% • 0% คอเลสเตอรอล • ไขมันดี MUFA</div>
+            <div style="margin-top:12px; font-weight:700; color:#FFF;">ราคาแนะนำ: 22 บาท</div>
+          </div>
+        </div>
+      `
+    },
+    {
+      title: "3. 7-Eleven Shelf Economics: 1.4 Bottles/Day",
+      badge: "VELOCITY FEASIBILITY",
+      content: `
+        <h2 style="font-size: 2.2rem; color: #F59E0B; margin-bottom: 1rem;">สถิติยืนยัน: ทำไมเป้า 100 ล้านบาทจึงเป็นไปได้จริง 100%</h2>
+        <div style="background: rgba(217,119,6,0.12); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border: 1px solid #D97706;">
+          <h3 style="color:#FDE68A; font-size:1.4rem;">สูตรการขาย: 7,142,857 ขวด ÷ 5,110,000 Store-Days = 1.40 ขวด / สาขา / วัน</h3>
+          <p style="color:#E2E8F0; margin-top:6px; font-size:0.95rem;">
+            แบ่งตาม 2 รสชาติ: ขาย <strong>Original Oat เพียง 0.7 ขวด</strong> และ <strong>Oat+Almond 0.7 ขวด</strong> ต่อวันต่อสาขาเท่านั้น!
+          </p>
+        </div>
+        <p style="color:#94A3B8; font-size:0.95rem;">
+          เมื่อเทียบกับ Tofusan ที่ขายได้ 8–12 ขวด/สาขา/วัน และชาเขียวอิชิตันที่ขาย 15–25 ขวด/สาขา/วัน เป้าหมาย 1.4 ขวดต่อสาขาจึงเป็นตัวเลขที่ Conservative และทำสำเร็จได้อย่างแน่นอน
         </p>
-        <div style="background: rgba(229,169,60,0.12); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0;">
-          <h3 style="color:#FCD34D; font-size:1.4rem;">"ทำไมต้องจ่าย 120 บาทที่คาเฟ่ ในเมื่อคุณดื่มอิชิตันโอ๊ตมิลค์ได้ในราคา 20 บาท?"</h3>
-        </div>
-        <p style="color: #94A3B8; font-size: 1rem;">
-          ขนาด 200ml พอดีมื้อเช้า พกพาสะดวก ไม่ต้องแช่เย็น เก็บได้นาน 12 เดือน สารอาหารครบครัน เบต้ากลูแคนสูง แคลเซียมแน่น 0% คอเลสเตอรอล
-        </p>
       `
     },
     {
-      title: "3. The 3 Strategic Product Portfolios",
-      badge: "PRODUCT INNOVATION",
+      title: "4. Integrated Marketing Plan (IMC) & Viral Stunt",
+      badge: "COMMUNICATION BLITZ",
       content: `
-        <h2 style="font-size: 2.2rem; color: #E5A93C; margin-bottom: 1rem;">3 ทิศทางสินค้า: ตอบโจทย์ 3 เซกเมนต์หลัก</h2>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
-          <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid #E5A93C;">
-            <h3 style="color:#E5A93C; font-size:1.2rem;">CONCEPT A: Daily Oat</h3>
-            <div style="font-size:0.8rem; color:#FCD34D; margin:4px 0 10px;">ราคา 20 บาท | Mass Leader</div>
-            <p style="font-size:0.85rem; color:#94A3B8;">สูตรจืด 0% น้ำตาล และสูตรกลมกล่อม เจาะคนทำงาน นักเรียน ย่อยง่ายแทนมื้อเช้า</p>
-          </div>
-          <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid #10B981;">
-            <h3 style="color:#10B981; font-size:1.2rem;">CONCEPT B: Oat Tea Lab</h3>
-            <div style="font-size:0.8rem; color:#6EE7B7; margin:4px 0 10px;">ราคา 25 บาท | Tea Synergy</div>
-            <p style="font-size:0.85rem; color:#94A3B8;">มัทฉะอุจิ, โฮจิฉะคั่วหอม, ชาไทยพรีเมียม สไตล์คาเฟ่ญี่ปุ่น แคลอรี่ต่ำ ไร้นมวัว</p>
-          </div>
-          <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid #F43F5E;">
-            <h3 style="color:#F43F5E; font-size:1.2rem;">CONCEPT C: Oat-Pop Vibe</h3>
-            <div style="font-size:0.8rem; color:#FDA4AF; margin:4px 0 10px;">ราคา 25 บาท | Gen-Z Street</div>
-            <p style="font-size:0.85rem; color:#94A3B8;">ดาร์กช็อกโกแลตเข้มข้น, ซอลท์เท็ดคาราเมล ดีไซน์จัดจ้านไวรัล TikTok แบบตันซันซู</p>
-          </div>
-        </div>
-      `
-    },
-    {
-      title: "4. 360° IMC Playbook & Signature Viral Stunt",
-      badge: "MARKETING BLITZ",
-      content: `
-        <h2 style="font-size: 2.2rem; color: #E5A93C; margin-bottom: 1rem;">แผนการตลาด 360° สไตล์คุณตัน: ไวรัลสะเทือนเมือง</h2>
-        <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 1.5rem;">
-          <li style="display: flex; gap: 12px; align-items: flex-start;">
-            <span style="color:#E5A93C; font-weight:700;">1. Viral Stunt:</span>
-            <span style="color:#CBD5E1;">คุณตันปลอมตัวเป็นบาริสต้าปริศนาที่สยามสแควร์ เสิร์ฟกาแฟโอ๊ตมิลค์ให้คนทายราคา 150 บาท แล้วเฉลย 20 บาท!</span>
+        <h2 style="font-size: 2.2rem; color: #F59E0B; margin-bottom: 1rem;">แผนการตลาด 360° สไตล์คุณตัน: ไวรัลสู่ยอดขายจริง</h2>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 1.5rem;">
+          <li style="display:flex; gap:12px;">
+            <strong style="color:#F59E0B;">Wave 1:</strong>
+            <span style="color:#CBD5E1;">Viral Stunt: "คุณตันบาริสต้าปริศนา ณ สยามสแควร์" เสิร์ฟลาเต้โอ๊ตทายราคา 150฿ เฉลยแค่ 20฿ ใน 7-Eleven</span>
           </li>
-          <li style="display: flex; gap: 12px; align-items: flex-start;">
-            <span style="color:#E5A93C; font-weight:700;">2. The 1M Sampling:</span>
-            <span style="color:#CBD5E1;">แจกชิมฟรี 1,000,000 กล่องตามสถานีรถไฟฟ้า มหาวิทยาลัย และย่านออฟฟิศ เพื่อทลายกำแพงการทดลอง</span>
+          <li style="display:flex; gap:12px;">
+            <strong style="color:#F59E0B;">Wave 2:</strong>
+            <span style="color:#CBD5E1;">Sampling Blitz: แจกชิม 500,000 ขวดใน 10 ย่านออฟฟิศ CBD กรุงเทพฯ ช่วงเช้า 07.30 - 09.30 น.</span>
           </li>
-          <li style="display: flex; gap: 12px; align-items: flex-start;">
-            <span style="color:#E5A93C; font-weight:700;">3. Signature Under-the-Cap:</span>
-            <span style="color:#CBD5E1;">สแกนรหัสใต้ฝา/ใต้กล่องผ่าน LINE OA ลุ้นทริปเที่ยวยุโรปดูทุ่งข้าวโอ๊ต และทองคำแท่ง 20 ล้านบาท!</span>
+          <li style="display:flex; gap:12px;">
+            <strong style="color:#F59E0B;">Wave 3:</strong>
+            <span style="color:#CBD5E1;">7-Eleven All Cafe Combo: ซื้อ Espresso Shot แลกซื้อนมโอ๊ต 15฿ เพื่อชง DIY Oat Latte</span>
           </li>
-          <li style="display: flex; gap: 12px; align-items: flex-start;">
-            <span style="color:#E5A93C; font-weight:700;">4. 7-Eleven Breakfast Combo:</span>
-            <span style="color:#CBD5E1;">โปรโมชั่นซื้อคู่อาหารเช้า แซนด์วิช/ข้าวกล่อง เพิ่มเพียง 15 บาท ได้โอ๊ตมิลค์ 1 กล่องทันที</span>
+          <li style="display:flex; gap:12px;">
+            <strong style="color:#F59E0B;">Wave 4:</strong>
+            <span style="color:#CBD5E1;">TikTok Trend: แฮชแท็ก #นัวคูณสองโอ๊ตอัลมอนด์ รีวิวรสชาติและสูตรทำเครื่องดื่มสุขภาพ</span>
           </li>
         </ul>
       `
     },
     {
-      title: "5. Financial Return & Board Approval Request",
-      badge: "FINANCIAL TARGET",
+      title: "5. Financial Statement & P&L Summary (COGS 8฿)",
+      badge: "P&L APPROVAL",
       content: `
-        <h2 style="font-size: 2.2rem; color: #E5A93C; margin-bottom: 1rem;">ประมาณการผลตอบแทนทางการเงิน & ข้ออนุมัติ</h2>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 1.5rem 0;">
-          <div style="background: rgba(16,185,129,0.1); border: 1px solid #10B981; padding: 1.5rem; border-radius: 12px;">
-            <div style="color: #94A3B8; font-size: 0.9rem;">เป้าหมายยอดขายปีแรก (Year 1 Revenue)</div>
-            <div style="color: #FFF; font-size: 2.2rem; font-weight: 800; font-family: Prompt;">1,500 – 1,990 M฿</div>
-            <div style="color: #10B981; font-size: 0.85rem; margin-top: 4px;">~90 ล้านกล่องต่อปีจากทุกช่องทาง</div>
-          </div>
-          <div style="background: rgba(229,169,60,0.1); border: 1px solid #E5A93C; padding: 1.5rem; border-radius: 12px;">
-            <div style="color: #94A3B8; font-size: 0.9rem;">กำไรขั้นต้นเป้าหมาย (Gross Profit)</div>
-            <div style="color: #FCD34D; font-size: 2.2rem; font-weight: 800; font-family: Prompt;">52% - 55%</div>
-            <div style="color: #E2E8F0; font-size: 0.85rem; margin-top: 4px;">สร้างกระแสเงินสดและผลกำไรมั่นคง</div>
-          </div>
-        </div>
-        <div style="background: rgba(255,255,255,0.05); padding: 1.25rem; border-radius: 10px; border-left: 4px solid #FF6B00;">
-          <strong style="color: #FFF;">ข้อเสนอเพื่ออนุมัติจาก CEO และคณะกรรมการ:</strong><br>
-          <span style="color: #CBD5E1; font-size: 0.95rem;">
-            1. อนุมัติงบการตลาดก้อนแรก 80 ล้านบาท สำหรับ Launch Phase<br>
-            2. อนุมัติปรับไลน์การผลิต Aseptic Cold Line 1 สาย ณ โรงงานโรจนะเพื่อผลิตโอ๊ตมิลค์<br>
-            3. อนุมัติเริ่มแผน DUAL-LAUNCH นำร่อง Concept A ในเดือนที่ 1 และตามด้วย Concept B ในเดือนที่ 3
-          </span>
+        <h2 style="font-size: 2.2rem; color: #F59E0B; margin-bottom: 1rem;">โครงสร้างกำไรสุทธิปีแรก (Year 1 P&L Model)</h2>
+        <table style="width:100%; border-collapse:collapse; margin: 1.5rem 0; font-size:0.95rem;">
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);"><td style="padding:8px 0; color:#CBD5E1;">ยอดขายสุทธิอิชิตัน (Net Revenue)</td><td style="text-align:right; font-weight:700; color:#FFF;">100.00 M฿ (100.0%)</td></tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);"><td style="padding:8px 0; color:#CBD5E1;">ต้นทุนขายรวม Total COGS (@ 8.00฿)</td><td style="text-align:right; color:#EF4444;">(57.14 M฿) (57.1%)</td></tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);"><td style="padding:8px 0; color:#CBD5E1;">กำไรขั้นต้นรวม (Gross Profit)</td><td style="text-align:right; font-weight:700; color:#10B981;">42.86 M฿ (42.9%)</td></tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);"><td style="padding:8px 0; color:#CBD5E1;">งบการตลาดและโฆษณา A&P (18%)</td><td style="text-align:right; color:#F59E0B;">(18.00 M฿) (18.0%)</td></tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);"><td style="padding:8px 0; color:#CBD5E1;">ค่าใช้จ่ายขายและบริหาร SG&A (8%)</td><td style="text-align:right; color:#94A3B8;">(8.00 M฿) (8.0%)</td></tr>
+          <tr><td style="padding:12px 0; font-weight:800; color:#F59E0B; font-size:1.1rem;">กำไรจากการดำเนินงานสุทธิ (EBIT)</td><td style="text-align:right; font-weight:800; color:#F59E0B; font-size:1.2rem;">16.86 M฿ (16.9%)</td></tr>
+        </table>
+        <div style="background:rgba(16,185,129,0.1); border:1px solid #10B981; padding:12px; border-radius:8px; font-size:0.85rem; color:#A7F3D0;">
+          💡 สรุป: โครงการสร้างผลกำไรจากการดำเนินงาน 16.86 ล้านบาท ได้ทันทีตั้งแต่ปีแรก โดยมีความเสี่ยงต่ำมาก
         </div>
       `
     }
   ];
 
-  function renderSlide(index) {
-    const s = slides[index];
+  function renderSlide(idx) {
+    const s = slides[idx];
     if (!s) return;
-    deckCounter.textContent = `Slide ${index + 1} of ${slides.length}`;
+    deckCounter.textContent = `Slide ${idx + 1} of ${slides.length}`;
     deckSlideCard.innerHTML = `
-      <div class="badge-pill" style="border-color: #E5A93C; color: #FCD34D; margin-bottom: 1rem;">
+      <div class="badge-pill" style="border-color: var(--accent-gold); color: #FDE68A; margin-bottom: 1rem;">
         ${s.badge}
       </div>
       ${s.content}
     `;
-    deckPrevBtn.disabled = (index === 0);
-    deckNextBtn.textContent = (index === slides.length - 1) ? 'จบการนำเสนอ (Finish)' : 'ถัดไป (Next) ▶';
+    deckPrevBtn.disabled = (idx === 0);
+    deckNextBtn.textContent = (idx === slides.length - 1) ? 'จบการนำเสนอ (Finish)' : 'ถัดไป (Next) ▶';
   }
 
   if (deckBtn) {
@@ -765,22 +623,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ==========================================
-  // 7. GOOGLE STITCH UI: SOUND & THEME SYSTEM
-  // ==========================================
-
-  // Sound Toggle Handler
-  const soundToggleBtn = document.getElementById('soundToggleBtn');
-  if (soundToggleBtn) {
-    soundToggleBtn.addEventListener('click', () => {
-      soundEnabled = !soundEnabled;
-      soundToggleBtn.innerHTML = soundEnabled ? '<span>🔊 Sound: ON</span>' : '<span>🔇 Sound: OFF</span>';
-      soundToggleBtn.style.opacity = soundEnabled ? '1' : '0.6';
-      if (soundEnabled) playUiSound('pop');
-      showToast(soundEnabled ? 'เปิดเสียงเอฟเฟกต์แล้ว' : 'ปิดเสียงเอฟเฟกต์แล้ว', soundEnabled ? '🔊' : '🔇');
-    });
-  }
-
   // Toast Notification System
   const stitchToast = document.getElementById('stitchToast');
   const toastIcon = document.getElementById('toastIcon');
@@ -797,61 +639,6 @@ document.addEventListener('DOMContentLoaded', () => {
       stitchToast.classList.remove('show');
     }, 2800);
   }
-
-  // Shelf Pulse Simulation
-  const shelfPulseBtn = document.getElementById('shelfPulseBtn');
-  const shelfHeroItem = document.getElementById('shelfHeroItem');
-  if (shelfPulseBtn && shelfHeroItem) {
-    shelfPulseBtn.addEventListener('click', () => {
-      playUiSound('chime');
-      shelfHeroItem.style.transform = 'translateY(-18px) scale(1.15)';
-      shelfHeroItem.style.filter = 'drop-shadow(0 0 20px #FF6B00)';
-      showToast('จำลองมุมมองสะดุดตา: สินค้าอิชิตันดึงดูดสายตาแรกของผู้ซื้อ!', '🔥');
-      setTimeout(() => {
-        shelfHeroItem.style.transform = '';
-        shelfHeroItem.style.filter = '';
-      }, 1800);
-    });
-  }
-
-  // Theme Switcher Handlers (Floating bar + Navbar pills)
-  const themeDarkBtn = document.getElementById('themeDarkBtn');
-  const themeOatBtn = document.getElementById('themeOatBtn');
-  const themeMatchaBtn = document.getElementById('themeMatchaBtn');
-  const navThemeDarkBtn = document.getElementById('navThemeDarkBtn');
-  const navThemeOatBtn = document.getElementById('navThemeOatBtn');
-  const navThemeMatchaBtn = document.getElementById('navThemeMatchaBtn');
-
-  const themeBtns = [themeDarkBtn, themeOatBtn, themeMatchaBtn, navThemeDarkBtn, navThemeOatBtn, navThemeMatchaBtn].filter(Boolean);
-
-  function setActiveTheme(themeName) {
-    document.body.classList.remove('theme-oat', 'theme-matcha');
-    if (themeName !== 'dark') {
-      document.body.classList.add(`theme-${themeName}`);
-    }
-
-    // Toggle active classes
-    [themeDarkBtn, navThemeDarkBtn].forEach(b => b && b.classList.toggle('active', themeName === 'dark'));
-    [themeOatBtn, navThemeOatBtn].forEach(b => b && b.classList.toggle('active', themeName === 'oat'));
-    [themeMatchaBtn, navThemeMatchaBtn].forEach(b => b && b.classList.toggle('active', themeName === 'matcha'));
-
-    const themeLabels = {
-      dark: '🌑 Dark Luxury (บอร์ดรูมพรีเมียม)',
-      oat: '🌾 Golden Oat (มู้ดคลีนธรรมชาติ)',
-      matcha: '🍵 Kyoto Matcha (มู้ดชาเขียวสดชื่น)'
-    };
-
-    playUiSound('click');
-    showToast(`เปลี่ยนธีม: ${themeLabels[themeName] || themeName}`, '🎨');
-  }
-
-  if (themeDarkBtn) themeDarkBtn.addEventListener('click', () => setActiveTheme('dark'));
-  if (themeOatBtn) themeOatBtn.addEventListener('click', () => setActiveTheme('oat'));
-  if (themeMatchaBtn) themeMatchaBtn.addEventListener('click', () => setActiveTheme('matcha'));
-
-  if (navThemeDarkBtn) navThemeDarkBtn.addEventListener('click', () => setActiveTheme('dark'));
-  if (navThemeOatBtn) navThemeOatBtn.addEventListener('click', () => setActiveTheme('oat'));
-  if (navThemeMatchaBtn) navThemeMatchaBtn.addEventListener('click', () => setActiveTheme('matcha'));
 
   // Quick Share Button
   const quickShareBtn = document.getElementById('quickShareBtn');
