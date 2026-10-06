@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICHITAN OAT MILK — CEO Strategic Pitch & Launch Portal</title>
+  <meta name="description" content="Official CMO Strategic Launch Proposal & Pitch Portal for ICHITAN Oat Milk. Entering Thailand's Billion-Baht Plant-Based Beverage Market.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Executive Navigation Bar -->
+  <header class="navbar">
+    <a href="#" class="nav-brand">
+      <div class="brand-badge">ICHITAN</div>
+      <div>
+        <div class="brand-name">OAT MILK <span class="text-gold">STRATEGY</span></div>
+        <div class="brand-sub">CMO Boardroom Proposal</div>
+      </div>
+    </a>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#overview" class="active">ภาพรวมกลยุทธ์</a></li>
+        <li><a href="#concepts">3 คอนเซปต์หลัก</a></li>
+        <li><a href="#market">วิเคราะห์ตลาดคู่แข่ง</a></li>
+        <li><a href="#simulator">จำลองผลกำไร (Simulator)</a></li>
+        <li><a href="#imc">แผนการตลาด 360°</a></li>
+        <li><a href="#voting">โหวตอนุมัติ (Voting)</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <button id="deckBtn" class="btn btn-outline" title="เข้าสู่โหมดนำเสนอสไลด์บนโปรเจกเตอร์">
+        <span>📽️ Pitch Deck Mode</span>
+      </button>
+      <a href="#simulator" class="btn btn-primary">
+        <span>💰 คำนวณรายได้</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="overview" class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        
+        <div class="hero-content">
+          <div class="badge-pill">
+            <span>🌾 New Category Disruption 2026</span>
+          </div>
+          <h1 class="hero-title">
+            เขย่าตลาดนมพืชไทยสู่ <span>1,000 ล้าน</span><br>
+            ด้วย "โอ๊ตมิลค์มหาชน"
+          </h1>
+          <p class="hero-subtitle">
+            ข้อเสนอเชิงกลยุทธ์ต่อ คุณตัน ภาสกรนที และคณะกรรมการบริหาร: เปลี่ยน "นมโอ๊ต" จากสินค้าราคาแพงเฉพาะกลุ่มคาเฟ่ (110–130฿) ให้เป็นเครื่องดื่มประจำวันของคนไทยทุกคนในราคา <strong>20–25 บาท</strong> ผ่าน 14,000+ สาขาของ 7-Eleven ทั่วประเทศ!
+          </p>
+
+          <div class="hero-actions" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <a href="#concepts" class="btn btn-primary" style="padding: 12px 28px; font-size: 1.05rem;">
+              <span>สำรวจ 3 ทิศทางสินค้า</span> ➔
+            </a>
+            <a href="#market" class="btn btn-glass">
+              <span>📊 เจาะลึกข้อมูลคู่แข่ง & ตลาด</span>
+            </a>
+          </div>
+
+          <div class="hero-stats-row">
+            <div class="stat-item">
+              <h3>65,000M฿</h3>
+              <p>มูลค่าตลาดนมพร้อมดื่มไทย (TAM)</p>
+            </div>
+            <div class="stat-item">
+              <h3>+45% YoY</h3>
+              <p>อัตราเติบโตกลุ่ม Oat Milk ในไทย</p>
+            </div>
+            <div class="stat-item">
+              <h3>90%</h3>
+              <p>คนไทยย่อยนมวัวยาก (Lactose Intolerant)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Packaging Visualizer -->
+        <div class="hero-visual-card">
+          <div class="visual-badge">LIVE 3D PACK PREVIEW</div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">จำลองบรรจุภัณฑ์ต้นแบบ (Interactive Packaging)</p>
+          
+          <div class="pack-render-stage">
+            <div id="heroPack3d" class="pack-3d">
+              <div class="pack-cap" id="heroPackCap"></div>
+              <div class="pack-body" id="heroPackBody">
+                <div class="pack-label">
+                  <div class="pack-brand">ICHITAN</div>
+                  <div class="pack-name" id="heroPackName">DAILY OAT</div>
+                  <div class="pack-sub" id="heroPackSub">100% Australian Oat Milk</div>
+                </div>
+                
+                <div class="pack-graphic" id="heroPackGraphic">🌾</div>
+
+                <div class="pack-footer">
+                  <div class="pack-badges" id="heroPackBadges">
+                    <span>🌱 0% SUGAR</span> • <span>🥛 LACTOSE FREE</span>
+                  </div>
+                  <div class="pack-price-tag" id="heroPackPrice">20.-</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">เลือกดูรสชาติและดีไซน์ต้นแบบ:</div>
+          <div class="pack-controls">
+            <button class="color-dot active" style="background: #EED7A1;" data-flavor="plain" title="สูตรออริจินัล 0% น้ำตาล"></button>
+            <button class="color-dot" style="background: #D4A373;" data-flavor="creamy" title="สูตรคลาสสิกกลมกล่อม"></button>
+            <button class="color-dot" style="background: #2D6A4F;" data-flavor="matcha" title="สูตรอูจิมัทฉะโอ๊ตมิลค์"></button>
+            <button class="color-dot" style="background: #8B4513;" data-flavor="hojicha" title="สูตรโฮจิฉะคั่วหอม"></button>
+            <button class="color-dot" style="background: #3D2314;" data-flavor="choco" title="สูตรเบลเยี่ยมดาร์กโกโก้"></button>
+          </div>
+          <div id="flavorActiveName" style="margin-top: 10px; font-weight: 600; font-size: 0.9rem; color: var(--accent-gold);">
+            Daily Original 0% Added Sugar (สูตรจืดธรรมชาติ)
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- The 3 Strategic Concepts Section -->
+  <section id="concepts" class="section" style="background: rgba(15, 23, 42, 0.4);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Strategic Directions</div>
+        <h2 class="section-title">3 คอนเซปต์กลยุทธ์นำเสนอ CEO</h2>
+        <p class="section-desc">
+          การออกแบบทางเลือกผลิตภัณฑ์ 3 ทิศทางเพื่อตอบโจทย์ผู้บริโภคแต่ละเซกเมนต์ พร้อมจุดยืนราคาและกลยุทธ์การสื่อสารที่แตกต่างอย่างสิ้นเชิง
+        </p>
+      </div>
+
+      <!-- Concept Tabs Navigation -->
+      <div class="concept-nav">
+        <button class="concept-tab-btn active" data-concept="concept-a">
+          <span>🥇 CONCEPT A: The Mass Disruptor (โอ๊ตมิลค์มหาชน)</span>
+        </button>
+        <button class="concept-tab-btn" data-concept="concept-b">
+          <span>🍵 CONCEPT B: The Tea Fusion (อิชิตัน โอ๊ต ที แล็บ)</span>
+        </button>
+        <button class="concept-tab-btn" data-concept="concept-c">
+          <span>⚡ CONCEPT C: The Gen-Z Street Trend (โอ๊ตป๊อป ตัวตึง)</span>
+        </button>
+      </div>
+
+      <!-- Tab Content Cards -->
+      <div id="conceptCardWrapper" class="glass-card" style="padding: 2.5rem;">
+        
+        <!-- Concept A Details (Default) -->
+        <div id="concept-a-panel" class="concept-panel active">
+          <div class="concept-display-grid">
+            <div class="concept-detail-box">
+              <div class="badge-pill" style="border-color: #E5A93C; color: #E5A93C;">
+                🎯 ราคาเป้าหมาย: 20 – 22 บาท | Mass RTD Volume Leader
+              </div>
+              <h3 class="text-gold">ICHITAN DAILY OAT (โอ๊ตมิลค์มหาชน)</h3>
+              <div class="concept-tagline">"โอ๊ตมิลค์ของคนไทยทุกคน อร่อย ย่อยง่าย แค่ 20 บาท ทุกเซเว่น"</div>
+              <p style="color: var(--text-muted); font-size: 1rem;">
+                <strong>กลยุทธ์หลัก:</strong> ตีแตกตลาดนมวัวและนมถั่วเหลือง (Lactasoy, Vitamilk) ด้วยการนำเสนอ "นมโอ๊ต" ที่ทุกคนเข้าถึงได้ ไม่ต้องจ่าย 120 บาทที่คาเฟ่อีกต่อไป เน้นสุขภาพประจำวัน สารอาหารแน่น ดื่มแทนมื้อเช้าได้ทันที
+              </p>
+
+              <ul class="usp-list">
+                <li class="usp-item">
+                  <span class="usp-icon">✔</span>
+                  <div><strong>ข้าวโอ๊ตนอร์ดิก-ออสเตรเลีย 100%:</strong> ไม่มีแลคโตส 0% คอเลสเตอรอล ย่อยง่าย สบายท้อง</div>
+                </li>
+                <li class="usp-item">
+                  <span class="usp-icon">✔</span>
+                  <div><strong>เบต้า-กลูแคน & ใยอาหารสูง:</strong> เสริมภูมิคุ้มกัน ช่วยควบคุมคอเลสเตอรอลและน้ำตาลในเลือด</div>
+                </li>
+                <li class="usp-item">
+                  <span class="usp-icon">✔</span>
+                  <div><strong>ไลน์ผลิต Aseptic Cold Filling:</strong> คงคุณค่าสารอาหาร รสชาตินุ่มละมุน ไม่เหม็นหืน ไม่ใส่สารกันเสีย เก็บได้ 1 ปีในอุณหภูมิปกติ</div>
+                </li>
+              </ul>
+
+              <div style="margin-top: 1.5rem;">
+                <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">3 รสชาติเปิดตัว (Hero SKUs):</div>
+                <div class="sku-pills">
+                  <div class="sku-pill">🥛 <strong>Original 0% Sugar</strong> (ไม่เติมน้ำตาล)</div>
+                  <div class="sku-pill">🌾 <strong>Creamy Classic</strong> (กลมกล่อมหอมโอ๊ต)</div>
+                  <div class="sku-pill">✨ <strong>High-Fiber & Prebiotics</strong> (ขับถ่ายคล่อง)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Target Consumer Profile & Visual Card -->
+            <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem;">
+              <h4 style="font-size: 1.15rem; color: #FFF; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+                <span>👤 Target Persona:</span>
+                <span style="color: var(--accent-gold);">"คุณมินท์ มนุษย์ออฟฟิศ & คนรุ่นใหม่วัย 22-38"</span>
+              </h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                ดื่มนมวัวแล้วท้องอืดตลอดเวลา แต่กาแฟใส่นมโอ๊ตที่ร้านคาเฟ่บวกเพิ่มแก้วละ 30 บาท อยากได้เครื่องดื่มสุขภาพพร้อมดื่มที่ซื้อได้ทันทีตอนเช้าในราคา 20 บาท พร้อมอิ่มท้องก่อนเข้างาน
+              </p>
+
+              <div style="background: rgba(229, 169, 60, 0.1); border-left: 3px solid var(--accent-gold); padding: 12px 16px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+                <div style="font-size: 0.85rem; font-weight: 700; color: var(--accent-gold-light);">💡 จุดตัดสินใจเชิงพาณิชย์ (Board Insight):</div>
+                <div style="font-size: 0.85rem; color: #E2E8F0; margin-top: 4px;">
+                  ยอดขาย Volume จะมหาศาล เพราะราคา 20 บาทอยู่ในระดับ "Impulse Buying" ของ 7-Eleven และสามารถส่งออกไปยังกลุ่มร้านโชห่วยและต่างจังหวัดได้โดยไม่ต้องแช่เย็น
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 1.5rem;">
+                <div style="text-align: center; background: rgba(255, 255, 255, 0.04); padding: 10px; border-radius: 8px;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">บรรจุภัณฑ์</div>
+                  <div style="font-size: 0.95rem; font-weight: 700;">Tetra Prisma 200ml</div>
+                </div>
+                <div style="text-align: center; background: rgba(255, 255, 255, 0.04); padding: 10px; border-radius: 8px;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Gross Margin เป้าหมาย</div>
+                  <div style="font-size: 0.95rem; font-weight: 700; color: #10B981;">52% - 55%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept B Details -->
+        <div id="concept-b-panel" class="concept-panel" style="display: none;">
+          <div class="concept-display-grid">
+            <div class="concept-detail-box">
+              <div class="badge-pill" style="border-color: #10B981; color: #10B981;">
+                🍵 ราคาเป้าหมาย: 25 – 28 บาท | Premium Tea Synergy
+              </div>
+              <h3 class="text-tea">ICHITAN OAT TEA LAB (ชาพรีเมียมผสานโอ๊ตมิลค์ญี่ปุ่น)</h3>
+              <div class="concept-tagline">"มรดกชาแท้ระดับพรีเมียม ผสานความนุ่มละมุนของโอ๊ตมิลค์สไตล์โตเกียวคาเฟ่"</div>
+              <p style="color: var(--text-muted); font-size: 1rem;">
+                <strong>กลยุทธ์หลัก:</strong> ต่อยอด DNA เบอร์ 1 ด้านชาเขียวของอิชิตันและใบชาชิซูโอกะ สร้างหมวดหมู่ใหม่ "Healthy Tea Latte" ที่อร่อยเข้มข้นเหมือนคาเฟ่ญี่ปุ่น แต่แคลอรี่ต่ำกว่าชานมไข่มุกถึง 70% และไม่มีนมวัว 100%
+              </p>
+
+              <ul class="usp-list">
+                <li class="usp-item">
+                  <span class="usp-icon" style="color: #10B981;">✔</span>
+                  <div><strong>ชาแท้ 100% จากเกียวโตและชิซูโอกะ:</strong> สกัดสด ไม่ใช้สารแต่งกลิ่นสังเคราะห์ กลิ่นหอมอโรมาแท้</div>
+                </li>
+                <li class="usp-item">
+                  <span class="usp-icon" style="color: #10B981;">✔</span>
+                  <div><strong>โอ๊ตมิลค์เนื้อเนียนละเอียด:</strong> ฟองนมโอ๊ตสูตรพิเศษ ละมุนลิ้น ไม่กลบกลิ่นชา เข้มข้นกลมกล่อม</div>
+                </li>
+                <li class="usp-item">
+                  <span class="usp-icon" style="color: #10B981;">✔</span>
+                  <div><strong>เพียง 85–110 แคลอรี่:</strong> อร่อยฟินแบบไม่รู้สึกผิด (Guilt-Free Indulgence) เหมาะสำหรับดื่มยามบ่ายแทนของหวาน</div>
+                </li>
+              </ul>
+
+              <div style="margin-top: 1.5rem;">
+                <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">3 รสชาติเปิดตัว (Hero SKUs):</div>
+                <div class="sku-pills">
+                  <div class="sku-pill">🍵 <strong>Uji Matcha Oat Latte</strong> (มัทฉะอุจิแท้ 100%)</div>
+                  <div class="sku-pill">🍂 <strong>Roasted Hojicha Oat</strong> (โฮจิฉะคั่วหอมกรุ่น)</div>
+                  <div class="sku-pill">🧋 <strong>Royal Thai Oat Tea</strong> (ชาไทยพรีเมียมไร้นมวัว)</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem;">
+              <h4 style="font-size: 1.15rem; color: #FFF; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+                <span>👤 Target Persona:</span>
+                <span style="color: #10B981;">"คุณพลอย สายคาเฟ่ & ชานมเลิฟเวอร์ วัย 20-35"</span>
+              </h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                ชอบสั่ง Matcha Latte ใส่นมโอ๊ตแก้วละ 120-140 บาทจากคาเฟ่สเปเชียลตี้ แต่อยากได้ความสะดวกที่แวะซื้อได้ทุกบ่ายในเซเว่น ราคา 25 บาท คุณภาพเทียบเท่าคาเฟ่ดัง
+              </p>
+
+              <div style="background: rgba(16, 185, 129, 0.1); border-left: 3px solid #10B981; padding: 12px 16px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+                <div style="font-size: 0.85rem; font-weight: 700; color: #6EE7B7;">💡 จุดตัดสินใจเชิงพาณิชย์ (Board Insight):</div>
+                <div style="font-size: 0.85rem; color: #E2E8F0; margin-top: 4px;">
+                  เป็นการ Upsell ดึงลูกค้าน้ำชาเขียวเดิมที่ต้องการความแปลกใหม่ และเพิ่ม Average Selling Price (ASP) ขึ้นสู่ 25-28 บาท ยกระดับภาพลักษณ์แบรนด์อิชิตันสู่พรีเมียม
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 1.5rem;">
+                <div style="text-align: center; background: rgba(255, 255, 255, 0.04); padding: 10px; border-radius: 8px;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">บรรจุภัณฑ์</div>
+                  <div style="font-size: 0.95rem; font-weight: 700;">Sleek Bottle 250ml</div>
+                </div>
+                <div style="text-align: center; background: rgba(255, 255, 255, 0.04); padding: 10px; border-radius: 8px;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Gross Margin เป้าหมาย</div>
+                  <div style="font-size: 0.95rem; font-weight: 700; color: #10B981;">56% - 58%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept C Details -->
+        <div id="concept-c-panel" class="concept-panel" style="display: none;">
+          <div class="concept-display-grid">
+            <div class="concept-detail-box">
+              <div class="badge-pill" style="border-color: #F43F5E; color: #F43F5E;">
+                ⚡ ราคาเป้าหมาย: 25 บาท | Gen-Z Pop Culture & Viral Hit
+              </div>
+              <h3 class="text-pop">ICHITAN OAT-POP / VIBE (โอ๊ตป๊อป ตัวตึงวัยรุ่น)</h3>
+              <div class="concept-tagline">"อร่อยจัดจ้าน ฟินได้ไม่ต้องแคร์แคลอรี่ #โอ๊ตป๊อปตัวตึง"</div>
+              <p style="color: var(--text-muted); font-size: 1rem;">
+                <strong>กลยุทธ์หลัก:</strong> ต่อยอดโมเดลความสำเร็จของ "ตันซันซู (Tan San Su)" ที่เจาะกลุ่มวัยรุ่น Gen Z ด้วยวัฒนธรรม Street Art & K-Pop ฉีกภาพจำนมโอ๊ตที่ดูแก่และจืดชืด ให้กลายเป็นขนมหวานพร้อมดื่มสุดไฮป์
+              </p>
+
+              <ul class="usp-list">
+                <li class="usp-item">
+                  <span class="usp-icon" style="color: #F43F5E;">✔</span>
+                  <div><strong>รสชาติแนวของหวานพรีเมียม (Dessert Drinks):</strong> ดาร์กช็อกโกแลตแท้ เบลเยียม, ซอลท์เท็ดคาราเมล, สตรอว์เบอร์รี</div>
+                </li>
+                <li class="usp-item">
+                  <span class="usp-icon" style="color: #F43F5E;">✔</span>
+                  <div><strong>Clean Sustained Energy:</strong> พลังงานสะอาดจากข้าวโอ๊ต ไม่ทำให้น้ำตาลในเลือดเหวี่ยง (Low GI) เหมาะกับการเล่นเกมหรืออ่านหนังสือดึก</div>
+                </li>
+                <li class="usp-item">
+                  <span class="usp-icon" style="color: #F43F5E;">✔</span>
+                  <div><strong>ดีไซน์สะดุดตาบนเชลฟ์ 7-Eleven:</strong> ฉลากสไตล์ Pop-Culture Y2K โดดเด่น ดึงดูดสายตาและเหมาะกับการถ่ายรูปทำคอนเทนต์ TikTok</div>
+                </li>
+              </ul>
+
+              <div style="margin-top: 1.5rem;">
+                <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">3 รสชาติเปิดตัว (Hero SKUs):</div>
+                <div class="sku-pills">
+                  <div class="sku-pill">🍫 <strong>Belgian Dark Cocoa</strong> (ช็อกโกแลตเข้มข้น 70%)</div>
+                  <div class="sku-pill">🍿 <strong>Salted Caramel Crunch</strong> (หอมคาราเมลสุดฟิน)</div>
+                  <div class="sku-pill">🍓 <strong>Tokyo Strawberry Shake</strong> (หวานซ่อนเปรี้ยวสไตล์เจแปน)</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem;">
+              <h4 style="font-size: 1.15rem; color: #FFF; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+                <span>👤 Target Persona:</span>
+                <span style="color: #F43F5E;">"น้องการ์ตูน นักเรียน/นักศึกษา Gen Z วัย 15-24"</span>
+              </h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                เล่น TikTok วันละหลายชั่วโมง ชอบเครื่องดื่มรสหวานมันอร่อย แต่พ่อแม่และตัวเองเริ่มกังวลเรื่องน้ำตาลและการแพ้นมวัว อยากได้ของอร่อยที่หยิบกินง่ายหลังเลิกเรียนในราคา 25 บาท
+              </p>
+
+              <div style="background: rgba(244, 63, 94, 0.1); border-left: 3px solid #F43F5E; padding: 12px 16px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+                <div style="font-size: 0.85rem; font-weight: 700; color: #FDA4AF;">💡 จุดตัดสินใจเชิงพาณิชย์ (Board Insight):</div>
+                <div style="font-size: 0.85rem; color: #E2E8F0; margin-top: 4px;">
+                  สร้างกระแสไวรัลบนโลกโซเชียลได้รวดเร็วที่สุด ดึงฐานลูกค้าวัยรุ่นเข้าสู่ Ecosystem ของอิชิตัน เพื่อสร้าง Brand Loyalty ในระยะยาว
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 1.5rem;">
+                <div style="text-align: center; background: rgba(255, 255, 255, 0.04); padding: 10px; border-radius: 8px;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">บรรจุภัณฑ์</div>
+                  <div style="font-size: 0.95rem; font-weight: 700;">Can / Bottle 260ml</div>
+                </div>
+                <div style="text-align: center; background: rgba(255, 255, 255, 0.04); padding: 10px; border-radius: 8px;">
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Gross Margin เป้าหมาย</div>
+                  <div style="font-size: 0.95rem; font-weight: 700; color: #10B981;">50% - 53%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Market War-Map & Competitive Intelligence -->
+  <section id="market" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Market Intelligence</div>
+        <h2 class="section-title">สมรภูมิตลาด & การเปรียบเทียบคู่แข่ง</h2>
+        <p class="section-desc">
+          การวิเคราะห์ช่องว่างตลาด (White Space Analysis) เผยให้เห็นโอกาสทองของอิชิตันในการเป็นเจ้าตลาด Mass Oat Milk รายแรกของประเทศไทย
+        </p>
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="market-grid">
+        <!-- Market Growth Chart -->
+        <div class="chart-card">
+          <div class="chart-title">📈 การเติบโตของตลาดนมจากพืชในไทย (2024 - 2028F)</div>
+          <div class="chart-desc">มูลค่าตลาดรวม (ล้านบาท) แยกตามเซกเมนต์ โดยเซกเมนต์โอ๊ตมิลค์เติบโตรวดเร็วที่สุด</div>
+          <div class="chart-container">
+            <canvas id="marketGrowthChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Price Benchmark Chart -->
+        <div class="chart-card">
+          <div class="chart-title">🏷️ การเปรียบเทียบราคาต่อ 100ml ในตลาด</div>
+          <div class="chart-desc">อิชิตันสร้างความได้เปรียบด้านราคาลดลง 40–55% เมื่อเทียบกับแบรนด์นำเข้า</div>
+          <div class="chart-container">
+            <canvas id="priceBenchmarkChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Competitor War Map Table -->
+      <div class="glass-card" style="padding: 1.75rem;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 1.25rem;">ตารางวิเคราะห์เปรียบเทียบคู่แข่งรายหลัก (Competitive War Map)</h3>
+        
+        <div class="benchmark-table-wrapper">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th>แบรนด์ (Brand)</th>
+                <th>ขนาดบรรจุ</th>
+                <th>ราคาขายปลีก</th>
+                <th>ราคา / 100ml</th>
+                <th>ช่องทางจำหน่ายหลัก</th>
+                <th>จุดอ่อนที่อิชิตันจะเข้าชิงส่วนแบ่ง</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Oatly</strong> (นำเข้าสวีเดน)</td>
+                <td>1,000ml / 250ml</td>
+                <td>125฿ / 45฿</td>
+                <td>12.5฿ - 18.0฿</td>
+                <td>Specialty Cafe, Gourmet, Tops</td>
+                <td>ราคาแพงเกินไป คนส่วนใหญ่ดื่มได้เฉพาะในคาเฟ่</td>
+              </tr>
+              <tr>
+                <td><strong>Goodmate</strong> (ไทย)</td>
+                <td>1,000ml / 180ml</td>
+                <td>110฿ / 30฿</td>
+                <td>11.0฿ - 16.7฿</td>
+                <td>7-Eleven, ซูเปอร์มาร์เก็ต</td>
+                <td>ขนาดเล็ก (180ml) แต่ราคายังแตะ 30฿ รสชาติเน้นคลีนพรีเมียม</td>
+              </tr>
+              <tr>
+                <td><strong>137 Degrees</strong> (ไทย)</td>
+                <td>1,000ml / 180ml</td>
+                <td>115฿ / 32฿</td>
+                <td>11.5฿ - 17.8฿</td>
+                <td>Modern Trade ทั่วไป</td>
+                <td>รสชาติมีกลิ่นถั่วเข้มข้น ดื่มยากสำหรับคนไม่ชอบรสสัมผัสฝาด</td>
+              </tr>
+              <tr>
+                <td><strong>Lactasoy / Vitamilk</strong></td>
+                <td>250ml - 300ml</td>
+                <td>10฿ - 15฿</td>
+                <td>4.0฿ - 5.0฿</td>
+                <td>ทั่วประเทศ (Mass)</td>
+                <td>นมถั่วเหลืองแบบเดิม ภาพลักษณ์หวาน ไม่ตอบโจทย์คนอยากเลี่ยงถั่วเหลือง</td>
+              </tr>
+              <tr class="highlight-ichitan">
+                <td>⭐ <strong>ICHITAN OAT MILK</strong></td>
+                <td>200ml - 250ml</td>
+                <td><strong>20฿ - 25฿</strong></td>
+                <td><strong>9.1฿ - 10.0฿</strong></td>
+                <td><strong>14,000+ 7-Eleven, MT, ร้านโชห่วย</strong></td>
+                <td><strong>ราคาต่ำกว่า 20-30%, รสชาติดื่มง่ายสไตล์อิชิตัน, พลังกระจายสินค้าสูงสุดในไทย</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive CEO Financial Simulator -->
+  <section id="simulator" class="section" style="background: rgba(15, 23, 42, 0.5);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Executive Tool</div>
+        <h2 class="section-title">เครื่องมือจำลองผลประกอบการ (CEO Profit Simulator)</h2>
+        <p class="section-desc">
+          ปรับแต่งตัวแปรราคา, จำนวนสาขา 7-Eleven, และความเร็วในการขายต่อวัน เพื่อดูประมาณการรายได้และกำไรขั้นต้นประจำปีแบบ Real-time
+        </p>
+      </div>
+
+      <div class="glass-card simulator-grid">
+        
+        <!-- Controls Column -->
+        <div>
+          <h3 style="font-size: 1.35rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 8px;">
+            <span>⚙️ ตัวแปรทางธุรกิจ (Business Drivers)</span>
+          </h3>
+
+          <!-- Retail Price Slider -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <span class="slider-label">1. ราคาขายปลีก (Retail Price per Pack):</span>
+              <span class="slider-value" id="valPrice">22 บาท</span>
+            </div>
+            <input type="range" class="custom-slider" id="sliderPrice" min="20" max="32" step="1" value="22">
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">
+              <span>20฿ (Mass Entry)</span>
+              <span>25฿ (Sweet Spot)</span>
+              <span>32฿ (Premium RTD)</span>
+            </div>
+          </div>
+
+          <!-- 7-Eleven Store Count -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <span class="slider-label">2. จำนวนสาขา 7-Eleven ที่วางจำหน่าย:</span>
+              <span class="slider-value" id="valStores">14,000 สาขา</span>
+            </div>
+            <input type="range" class="custom-slider" id="sliderStores" min="5000" max="15000" step="500" value="14000">
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">
+              <span>5,000 (กทม. เท่านั้น)</span>
+              <span>10,000 (หัวเมืองใหญ่)</span>
+              <span>15,000 (ทั่วประเทศ 100%)</span>
+            </div>
+          </div>
+
+          <!-- Units per store per day -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <span class="slider-label">3. ยอดขายเฉลี่ยต่อสาขา (Units / Store / Day):</span>
+              <span class="slider-value" id="valVelocity">12 กล่อง/วัน</span>
+            </div>
+            <input type="range" class="custom-slider" id="sliderVelocity" min="4" max="35" step="1" value="12">
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">
+              <span>4 กล่อง (Conservative)</span>
+              <span>12 กล่อง (Target)</span>
+              <span>35 กล่อง (Viral Blowout)</span>
+            </div>
+          </div>
+
+          <!-- Traditional Trade Multiplier -->
+          <div class="slider-group">
+            <div class="slider-header">
+              <span class="slider-label">4. สัดส่วนช่องทางเสริม (Lotus, Big C, Makro, โชห่วย):</span>
+              <span class="slider-value" id="valMultiplier">+50% ของยอด 7-11</span>
+            </div>
+            <input type="range" class="custom-slider" id="sliderMultiplier" min="20" max="80" step="5" value="50">
+          </div>
+        </div>
+
+        <!-- Live KPI Outputs Column -->
+        <div>
+          <h3 style="font-size: 1.35rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 8px;">
+            <span>📊 ผลลัพธ์ประมาณการประจำปี (Annual Projections)</span>
+          </h3>
+
+          <div class="kpi-board">
+            
+            <div class="kpi-card kpi-hero">
+              <div class="kpi-label">Projected Annual Revenue (ยอดขายรวมทั้งปี)</div>
+              <div class="kpi-number" id="kpiRevenue">1,990 M฿</div>
+              <div class="kpi-sub" id="kpiRevenueDesc">คิดเป็น ~5.3 ล้านกล่องต่อเดือน จากทุกช่องทางทั่วประเทศ</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-label">Projected Volume (ยอดผลิตต่อปี)</div>
+              <div class="kpi-number" id="kpiVolume" style="font-size: 1.8rem;">90.5 M</div>
+              <div class="kpi-sub">กล่อง/ขวด ต่อปี (Full Aseptic Capacity)</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-label">Gross Profit (กำไรขั้นต้นรวม)</div>
+              <div class="kpi-number text-tea" id="kpiGrossProfit" style="font-size: 1.8rem;">741 M฿</div>
+              <div class="kpi-sub" id="kpiMarginPercent">Gross Margin ~53.2%</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-label">7-Eleven Daily Volume</div>
+              <div class="kpi-number text-gold" id="kpiDaily711" style="font-size: 1.8rem;">168,000</div>
+              <div class="kpi-sub">กล่องต่อวัน เฉพาะในเครือข่าย 7-Eleven</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-label">Estimated Operating EBITDA</div>
+              <div class="kpi-number text-orange" id="kpiEbitda" style="font-size: 1.8rem;">412 M฿</div>
+              <div class="kpi-sub">หักงบการตลาดและค่ากระจายสินค้าแล้ว</div>
+            </div>
+
+          </div>
+
+          <div style="margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-dim); text-align: right;">
+            * สมมติฐาน: Margin เซเว่น 30%, ต้นทุน COGS ข้าวโอ๊ตและบรรจุภัณฑ์เฉลี่ย 33% ของราคาขายปลีก
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 360° Integrated Marketing Campaign (IMC Playbook) -->
+  <section id="imc" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Execution Strategy</div>
+        <h2 class="section-title">แผนการตลาด 360° (IMC Playbook)</h2>
+        <p class="section-desc">
+          กลยุทธ์การเปิดตัวแบบป่าล้อมเมือง ผสานเอกลักษณ์ความไวรัลสไตล์คุณตัน กับการตลาดดิจิทัลยุคใหม่เพื่อสร้างยอดขายถล่มทลายตั้งแต่วันแรก
+        </p>
+      </div>
+
+      <div class="glass-card timeline-wrapper">
+        
+        <!-- Step 1 -->
+        <div class="timeline-step">
+          <div class="timeline-phase">
+            PHASE 1
+            <span class="timeline-phase-tag">Week -4 ถึง D-Day</span>
+          </div>
+          <div class="timeline-content">
+            <h4>🎭 Viral Teaser: "คุณตันบาริสต้าปริศนา ณ สยามสแควร์"</h4>
+            <p>
+              สร้างคอนเทนต์วิดีโอทดลองสังคม (Social Experiment): คุณตันปลอมตัวเปิดบูธป๊อปอัปแจกกาแฟโอ๊ตมิลค์ระดับพรีเมียม ให้ผู้คนชิมแล้วถามว่าคิดว่าราคาแก้วละเท่าไหร่ ทุกคนตอบ "120–150 บาท" ก่อนเฉลยว่าคือนมโอ๊ตใหม่จากอิชิตัน ราคาเพียง <strong>20 บาท</strong> ที่ 7-Eleven!
+            </p>
+            <div class="tactic-badges">
+              <span class="tactic-badge">TikTok Organic Viral</span>
+              <span class="tactic-badge">B2B Trade Roadshow</span>
+              <span class="tactic-badge">Exclusive 7-Eleven Pre-order</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline-step">
+          <div class="timeline-phase">
+            PHASE 2
+            <span class="timeline-phase-tag">D-Day & เดือนที่ 1</span>
+          </div>
+          <div class="timeline-content">
+            <h4>💥 Mega Launch Blitz: "แจกชิม 1 ล้านกล่อง (The 1M Sampling Blitz)"</h4>
+            <p>
+              เนรมิตลาน Siam Square One เป็น "ICHITAN OAT MILK CITY" พร้อมทลายกำแพงความลังเลด้วยการแจกชิมฟรี 1,000,000 กล่องตามสถานี BTS/MRT, มหาวิทยาลัยชั้นนำ 20 แห่ง และย่านออฟฟิศ สีลม-สาทร-อโศก คู่ขนานไปกับโปรโมชั่นซื้อคู่อาหารเช้าใน 7-Eleven เพียงเพิ่ม 15 บาท!
+            </p>
+            <div class="tactic-badges">
+              <span class="tactic-badge">1,000,000 Free Sampling</span>
+              <span class="tactic-badge">Siam Square Landmark Event</span>
+              <span class="tactic-badge">7-Eleven Breakfast Combo (15฿ Add-on)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline-step">
+          <div class="timeline-phase">
+            PHASE 3
+            <span class="timeline-phase-tag">เดือนที่ 2 ถึง 3</span>
+          </div>
+          <div class="timeline-content">
+            <h4>🎁 Signature Gamification: "รหัสใต้ฝา ลุ้นบินดูฟาร์มโอ๊ตยุโรป & ทองคำ 20 ล้าน"</h4>
+            <p>
+              คง DNA ความตื่นเต้นระดับตำนานของอิชิตัน เพื่อกระตุ้น Repeat Purchase สูงสุด: สแกนรหัสใต้ฝา/ใต้กล่องผ่าน LINE OA @Ichitan ลุ้นรางวัลทริปในฝันเที่ยวสวิตเซอร์แลนด์และทุ่งข้าวโอ๊ตนอร์ดิก, รถยนต์ไฟฟ้า Tesla, และทองคำแท่ง แจกทุกสัปดาห์
+            </p>
+            <div class="tactic-badges">
+              <span class="tactic-badge">LINE OA QR Gamification</span>
+              <span class="tactic-badge">20M฿ Gold & European Trip</span>
+              <span class="tactic-badge">Instant All-Member Points</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="timeline-step" style="border-bottom: none;">
+          <div class="timeline-phase">
+            PHASE 4
+            <span class="timeline-phase-tag">เดือนที่ 1 ถึง 6</span>
+          </div>
+          <div class="timeline-content">
+            <h4>📱 Creator & Digital Ecosystem: #โอ๊ตมิลค์มหาชนChallenge</h4>
+            <p>
+              ระดม Influencers 3 กลุ่มหลัก: (1) หมอและผู้เชี่ยวชาญด้านสุขภาพ ให้ความรู้เรื่อง Lactose Intolerance และเบต้า-กลูแคน, (2) Barista & Cafe Hoppers รีวิวเปรียบเทียบ blind test ชนแบรนด์นำเข้า 125 บาท, (3) Top TikTokers ชาเลนจ์ทำเมนู DIY กาแฟและสมูทตี้โอ๊ตมิลค์แก้วโปรดที่บ้าน
+            </p>
+            <div class="tactic-badges">
+              <span class="tactic-badge">Doctor & Fitness KOLs</span>
+              <span class="tactic-badge">TikTok Hashtag Challenge</span>
+              <span class="tactic-badge">Lemon8 Office Hacks</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Executive Board Voting & Scorecard Console -->
+  <section id="voting" class="section" style="background: rgba(15, 23, 42, 0.4);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Decision Console</div>
+        <h2 class="section-title">คอนโซลโหวตอนุมัติของคณะกรรมการ (Board Voting)</h2>
+        <p class="section-desc">
+          ให้คะแนนแต่ละคอนเซปต์เพื่อสร้าง "มติคณะกรรมการบริหาร (Executive Resolution Summary)" สำหรับการเตรียมเปิดไลน์ผลิตจริง
+        </p>
+      </div>
+
+      <div class="voting-container">
+        
+        <!-- Concept A Vote -->
+        <div class="vote-concept-row">
+          <div class="vote-concept-name">
+            <h4>CONCEPT A: Daily Oat</h4>
+            <p>โอ๊ตมิลค์มหาชน 20฿ (Mass RTD)</p>
+          </div>
+          <div class="vote-stars-box" data-concept="a">
+            <button class="star-btn active" data-score="1">★</button>
+            <button class="star-btn active" data-score="2">★</button>
+            <button class="star-btn active" data-score="3">★</button>
+            <button class="star-btn active" data-score="4">★</button>
+            <button class="star-btn active" data-score="5">★</button>
+          </div>
+          <div class="vote-badge-status" id="scoreBadgeA">5 / 5 ดาว (แนะนำสูงสุด)</div>
+        </div>
+
+        <!-- Concept B Vote -->
+        <div class="vote-concept-row">
+          <div class="vote-concept-name">
+            <h4>CONCEPT B: Oat Tea Lab</h4>
+            <p>ชาพรีเมียมผสานโอ๊ต 25฿ (Tea Synergy)</p>
+          </div>
+          <div class="vote-stars-box" data-concept="b">
+            <button class="star-btn active" data-score="1">★</button>
+            <button class="star-btn active" data-score="2">★</button>
+            <button class="star-btn active" data-score="3">★</button>
+            <button class="star-btn active" data-score="4">★</button>
+            <button class="star-btn" data-score="5">★</button>
+          </div>
+          <div class="vote-badge-status" id="scoreBadgeB">4 / 5 ดาว (เฟส 2)</div>
+        </div>
+
+        <!-- Concept C Vote -->
+        <div class="vote-concept-row">
+          <div class="vote-concept-name">
+            <h4>CONCEPT C: Oat-Pop Vibe</h4>
+            <p>โอ๊ตป๊อปตัวตึง 25฿ (Gen-Z Trend)</p>
+          </div>
+          <div class="vote-stars-box" data-concept="c">
+            <button class="star-btn active" data-score="1">★</button>
+            <button class="star-btn active" data-score="2">★</button>
+            <button class="star-btn active" data-score="3">★</button>
+            <button class="star-btn" data-score="4">★</button>
+            <button class="star-btn" data-score="5">★</button>
+          </div>
+          <div class="vote-badge-status" id="scoreBadgeC">3 / 5 ดาว (รสชาติลิมิเต็ด)</div>
+        </div>
+
+        <!-- Dynamic Board Verdict Output -->
+        <div class="board-verdict-box" id="boardVerdictBox">
+          <div class="verdict-title">🎉 มติที่ประชุม: "อนุมัติเปิดตัวกลยุทธ์ DUAL-LAUNCH (CONCEPT A + B)"</div>
+          <p id="verdictText" style="color: #CBD5E1; font-size: 0.95rem; max-width: 650px; margin: 0 auto;">
+            เห็นชอบให้จัดสรรงบการตลาดก้อนแรก 80 ล้านบาท โดยใช้ <strong>CONCEPT A (Daily Oat)</strong> บุกเข้า 7-Eleven ยึดหัวหาด Mass Market เป็นตัวหลัก และตามด้วย <strong>CONCEPT B (Oat Tea Lab)</strong> ในเดือนที่ 3 เพื่อเพิ่มกำไรและยกระดับภาพลักษณ์แบรนด์
+          </p>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 12px;">
+            <button class="btn btn-primary" id="exportResolutionBtn">
+              <span>📄 พิมพ์เอกสารมติที่ประชุม (Executive Summary)</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Fullscreen Boardroom Presentation Modal (Pitch Deck Mode) -->
+  <div id="deckModal" class="presentation-modal">
+    <div class="deck-header">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div class="brand-badge" style="font-size: 0.9rem;">ICHITAN</div>
+        <div style="font-weight: 700; color: #FFF;">OAT MILK — CEO Presentation Deck</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <span id="deckCounter" style="color: var(--accent-gold); font-weight: 600;">Slide 1 of 5</span>
+        <button id="closeDeckBtn" class="btn btn-glass" style="padding: 6px 14px;">✕ ออกจากการนำเสนอ</button>
+      </div>
+    </div>
+
+    <div class="deck-slide-view">
+      <div class="slide-content-card" id="deckSlideCard">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+    <div class="deck-footer">
+      <div style="color: var(--text-dim); font-size: 0.85rem;">
+        กดแป้นพิมพ์ ⬅ หรือ ➡ เพื่อเปลี่ยนสไลด์
+      </div>
+      <div style="display: flex; gap: 12px;">
+        <button id="deckPrevBtn" class="btn btn-glass">◀ ก่อนหน้า (Previous)</button>
+        <button id="deckNextBtn" class="btn btn-primary">ถัดไป (Next) ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <div class="brand-badge">ICHITAN</div>
+            <div style="font-weight: 700; font-size: 1.1rem; color: #FFF;">ICHITAN GROUP PLC</div>
+          </div>
+          <p style="font-size: 0.85rem; max-width: 420px; line-height: 1.6;">
+            เอกสารนำเสนอแผนการตลาดและข้อเสนอเชิงกลยุทธ์ ผลิตภัณฑ์ "อิชิตัน โอ๊ตมิลค์" สำหรับคณะกรรมการบริหารและประธานเจ้าหน้าที่บริหาร โดยฝ่ายการตลาดและพัฒนาธุรกิจใหม่ (NPD Division)
+          </p>
+        </div>
+
+        <div>
+          <h4 style="color: #FFF; font-size: 0.95rem; margin-bottom: 12px;">เอกสารอ้างอิง</h4>
+          <ul style="list-style: none; font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px;">
+            <li><a href="marketing_plan.md" style="color: var(--accent-gold); text-decoration: none;">📄 marketing_plan.md (Dossier เต็ม)</a></li>
+            <li><a href="#market" style="color: var(--text-muted); text-decoration: none;">📊 ข้อมูลตลาดและคู่แข่ง</a></li>
+            <li><a href="#simulator" style="color: var(--text-muted); text-decoration: none;">💰 โมเดลคำนวณกำไร</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="color: #FFF; font-size: 0.95rem; margin-bottom: 12px;">มาตรฐานการผลิต</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            โรงงาน Green Wing อิชิตัน นิคมฯ โรจนะ<br>
+            เทคโนโลยี Aseptic Cold Filling มาตรฐานระดับโลก สะอาด ปลอดเชื้อ ไม่ใส่สารกันเสีย
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 ICHITAN GROUP PLC. Strictly Confidential & Proprietary for Boardroom Review.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
