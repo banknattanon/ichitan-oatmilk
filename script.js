@@ -5,6 +5,44 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Web Audio Synthesizer (Google Stitch Sound Design - Zero External Files)
+  let soundEnabled = true;
+  let audioCtx = null;
+  function playUiSound(type = 'click') {
+    if (!soundEnabled) return;
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      const now = audioCtx.currentTime;
+      if (type === 'click') {
+        osc.frequency.setValueAtTime(600, now);
+        osc.frequency.exponentialRampToValueAtTime(300, now + 0.04);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.005, now + 0.04);
+        osc.start(now);
+        osc.stop(now + 0.04);
+      } else if (type === 'pop') {
+        osc.frequency.setValueAtTime(450, now);
+        osc.frequency.exponentialRampToValueAtTime(900, now + 0.06);
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.06);
+        osc.start(now);
+        osc.stop(now + 0.06);
+      } else if (type === 'chime') {
+        osc.frequency.setValueAtTime(523.25, now);
+        osc.frequency.setValueAtTime(659.25, now + 0.08);
+        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+        osc.start(now);
+        osc.stop(now + 0.25);
+      }
+    } catch (e) {}
+  }
+
   // ==========================================
   // 1. 3D PACKAGING VIEWER & FLAVOR SWITCHER
   // ==========================================
@@ -19,7 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
       capColor: "linear-gradient(180deg, #FF6B00 0%, #CC5200 100%)",
       brandColor: "#784E1A",
       nameColor: "#3B2610",
-      fullName: "Daily Original 0% Added Sugar (สูตรจืดธรรมชาติ)"
+      fullName: "Daily Original 0% Added Sugar (สูตรจืดธรรมชาติ)",
+      sensory: { sweet: "15%", sweetVal: "1/5", creamy: "85%", creamyVal: "4.5/5", aroma: "70%", aromaVal: "3.5/5", body: "80%", bodyVal: "4/5", kcal: "~70 kcal / 200ml" }
     },
     creamy: {
       name: "CREAMY OAT",
@@ -31,7 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
       capColor: "linear-gradient(180deg, #E5A93C 0%, #B45309 100%)",
       brandColor: "#6B4416",
       nameColor: "#2C1A06",
-      fullName: "Daily Creamy Classic (สูตรคลาสสิกกลมกล่อม)"
+      fullName: "Daily Creamy Classic (สูตรคลาสสิกกลมกล่อม)",
+      sensory: { sweet: "40%", sweetVal: "2/5", creamy: "95%", creamyVal: "5/5", aroma: "75%", aromaVal: "4/5", body: "85%", bodyVal: "4.5/5", kcal: "~85 kcal / 200ml" }
     },
     matcha: {
       name: "MATCHA OAT",
@@ -43,7 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
       capColor: "linear-gradient(180deg, #10B981 0%, #047857 100%)",
       brandColor: "#1B4332",
       nameColor: "#FFFFFF",
-      fullName: "Uji Matcha Oat Latte (มัทฉะโอ๊ตมิลค์เกียวโต)"
+      fullName: "Uji Matcha Oat Latte (มัทฉะโอ๊ตมิลค์เกียวโต)",
+      sensory: { sweet: "25%", sweetVal: "1.5/5", creamy: "75%", creamyVal: "3.8/5", aroma: "95%", aromaVal: "5/5", body: "75%", bodyVal: "3.8/5", kcal: "~95 kcal / 250ml" }
     },
     hojicha: {
       name: "HOJICHA OAT",
@@ -55,7 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
       capColor: "linear-gradient(180deg, #A26B38 0%, #5E3917 100%)",
       brandColor: "#4A2810",
       nameColor: "#FFFFFF",
-      fullName: "Roasted Hojicha Oat (โฮจิฉะคั่วหอมกรุ่น)"
+      fullName: "Roasted Hojicha Oat (โฮจิฉะคั่วหอมกรุ่น)",
+      sensory: { sweet: "20%", sweetVal: "1.5/5", creamy: "70%", creamyVal: "3.5/5", aroma: "100%", aromaVal: "5/5", body: "80%", bodyVal: "4/5", kcal: "~90 kcal / 250ml" }
     },
     choco: {
       name: "DARK COCOA",
@@ -67,7 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
       capColor: "linear-gradient(180deg, #F43F5E 0%, #9F1239 100%)",
       brandColor: "#271612",
       nameColor: "#FFFFFF",
-      fullName: "Belgian Dark Cocoa Oat (ดาร์กช็อกโกแลตเข้มข้น 70%)"
+      fullName: "Belgian Dark Cocoa Oat (ดาร์กช็อกโกแลตเข้มข้น 70%)",
+      sensory: { sweet: "50%", sweetVal: "2.5/5", creamy: "90%", creamyVal: "4.5/5", aroma: "90%", aromaVal: "4.5/5", body: "95%", bodyVal: "5/5", kcal: "~110 kcal / 260ml" }
     }
   };
 
@@ -96,6 +139,28 @@ document.addEventListener('DOMContentLoaded', () => {
     heroPackPrice.textContent = f.price;
     flavorActiveName.textContent = f.fullName;
 
+    if (f.sensory) {
+      const barSweet = document.getElementById('barSweet');
+      const valSweet = document.getElementById('valSweet');
+      const barCreamy = document.getElementById('barCreamy');
+      const valCreamy = document.getElementById('valCreamy');
+      const barAroma = document.getElementById('barAroma');
+      const valAroma = document.getElementById('valAroma');
+      const barBody = document.getElementById('barBody');
+      const valBody = document.getElementById('valBody');
+      const flavorKcal = document.getElementById('flavorKcal');
+      
+      if (barSweet) barSweet.style.width = f.sensory.sweet;
+      if (valSweet) valSweet.textContent = f.sensory.sweetVal;
+      if (barCreamy) barCreamy.style.width = f.sensory.creamy;
+      if (valCreamy) valCreamy.textContent = f.sensory.creamyVal;
+      if (barAroma) barAroma.style.width = f.sensory.aroma;
+      if (valAroma) valAroma.textContent = f.sensory.aromaVal;
+      if (barBody) barBody.style.width = f.sensory.body;
+      if (valBody) valBody.textContent = f.sensory.bodyVal;
+      if (flavorKcal) flavorKcal.textContent = f.sensory.kcal;
+    }
+
     colorDots.forEach(dot => {
       dot.classList.toggle('active', dot.dataset.flavor === flavorKey);
     });
@@ -103,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   colorDots.forEach(dot => {
     dot.addEventListener('click', () => {
+      playUiSound('pop');
       updatePackFlavor(dot.dataset.flavor);
     });
   });
@@ -660,9 +726,88 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSlide--;
         renderSlide(currentSlide);
       }
-    } else if (e.key === 'Escape') {
-      deckModal.classList.remove('active');
+  // ==========================================
+  // 7. GOOGLE STITCH UI: SOUND & THEME SYSTEM
+  // ==========================================
+
+  // Sound Toggle Handler
+  const soundToggleBtn = document.getElementById('soundToggleBtn');
+  if (soundToggleBtn) {
+    soundToggleBtn.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      soundToggleBtn.innerHTML = soundEnabled ? '<span>🔊 Sound: ON</span>' : '<span>🔇 Sound: OFF</span>';
+      soundToggleBtn.style.opacity = soundEnabled ? '1' : '0.6';
+      if (soundEnabled) playUiSound('pop');
+      showToast(soundEnabled ? 'เปิดเสียงเอฟเฟกต์แล้ว' : 'ปิดเสียงเอฟเฟกต์แล้ว', soundEnabled ? '🔊' : '🔇');
+    });
+  }
+
+  // Toast Notification System
+  const stitchToast = document.getElementById('stitchToast');
+  const toastIcon = document.getElementById('toastIcon');
+  const toastMsg = document.getElementById('toastMsg');
+  let toastTimer = null;
+
+  function showToast(message, icon = '✨') {
+    if (!stitchToast) return;
+    toastMsg.textContent = message;
+    toastIcon.textContent = icon;
+    stitchToast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      stitchToast.classList.remove('show');
+    }, 2800);
+  }
+
+  // Shelf Pulse Simulation
+  const shelfPulseBtn = document.getElementById('shelfPulseBtn');
+  const shelfHeroItem = document.getElementById('shelfHeroItem');
+  if (shelfPulseBtn && shelfHeroItem) {
+    shelfPulseBtn.addEventListener('click', () => {
+      playUiSound('chime');
+      shelfHeroItem.style.transform = 'translateY(-18px) scale(1.15)';
+      shelfHeroItem.style.filter = 'drop-shadow(0 0 20px #FF6B00)';
+      showToast('จำลองมุมมองสะดุดตา: สินค้าอิชิตันดึงดูดสายตาแรกของผู้ซื้อ!', '🔥');
+      setTimeout(() => {
+        shelfHeroItem.style.transform = '';
+        shelfHeroItem.style.filter = '';
+      }, 1800);
+    });
+  }
+
+  // Theme Switcher Handlers
+  const themeDarkBtn = document.getElementById('themeDarkBtn');
+  const themeOatBtn = document.getElementById('themeOatBtn');
+  const themeMatchaBtn = document.getElementById('themeMatchaBtn');
+  const themeBtns = [themeDarkBtn, themeOatBtn, themeMatchaBtn].filter(Boolean);
+
+  function setActiveTheme(themeName, activeBtn) {
+    document.body.classList.remove('theme-oat', 'theme-matcha');
+    if (themeName !== 'dark') {
+      document.body.classList.add(`theme-${themeName}`);
     }
-  });
+    themeBtns.forEach(btn => btn.classList.remove('active'));
+    if (activeBtn) activeBtn.classList.add('active');
+    playUiSound('click');
+    showToast(`เปลี่ยนธีม: ${activeBtn.textContent.trim()}`, '🎨');
+  }
+
+  if (themeDarkBtn) themeDarkBtn.addEventListener('click', () => setActiveTheme('dark', themeDarkBtn));
+  if (themeOatBtn) themeOatBtn.addEventListener('click', () => setActiveTheme('oat', themeOatBtn));
+  if (themeMatchaBtn) themeMatchaBtn.addEventListener('click', () => setActiveTheme('matcha', themeMatchaBtn));
+
+  // Quick Share Button
+  const quickShareBtn = document.getElementById('quickShareBtn');
+  if (quickShareBtn) {
+    quickShareBtn.addEventListener('click', () => {
+      const liveUrl = 'https://now-oatmilk.vercel.app';
+      navigator.clipboard.writeText(liveUrl).then(() => {
+        playUiSound('pop');
+        showToast('คัดลอกลิงก์ https://now-oatmilk.vercel.app เรียบร้อยแล้ว!', '📋');
+      }).catch(() => {
+        showToast('เปิด URL: ' + liveUrl, '🌐');
+      });
+    });
+  }
 
 });

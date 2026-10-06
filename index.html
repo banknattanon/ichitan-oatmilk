@@ -37,6 +37,9 @@
     </nav>
 
     <div class="nav-actions">
+      <button id="soundToggleBtn" class="sound-btn" title="เปิด/ปิดเอฟเฟกต์เสียง">
+        <span>🔊 Sound: ON</span>
+      </button>
       <button id="deckBtn" class="btn btn-outline" title="เข้าสู่โหมดนำเสนอสไลด์บนโปรเจกเตอร์">
         <span>📽️ Pitch Deck Mode</span>
       </button>
@@ -125,6 +128,34 @@
           </div>
           <div id="flavorActiveName" style="margin-top: 10px; font-weight: 600; font-size: 0.9rem; color: var(--accent-gold);">
             Daily Original 0% Added Sugar (สูตรจืดธรรมชาติ)
+          </div>
+
+          <!-- Google Stitch Inspired: Dynamic Taste Profile Sensory Meter -->
+          <div class="taste-profile-box">
+            <div style="font-size: 0.75rem; font-weight: 700; color: #E2E8F0; margin-bottom: 8px; display: flex; justify-content: space-between;">
+              <span>👅 SENSORY PROFILE (รสสัมผัส)</span>
+              <span id="flavorKcal" style="color: var(--accent-gold);">~70 kcal / 200ml</span>
+            </div>
+            <div class="taste-metric">
+              <span class="taste-metric-label">ความหวาน (Sweet)</span>
+              <div class="taste-bar-bg"><div class="taste-bar-fill" id="barSweet" style="width: 15%;"></div></div>
+              <span class="taste-val-text" id="valSweet">1/5</span>
+            </div>
+            <div class="taste-metric">
+              <span class="taste-metric-label">ความละมุน (Creamy)</span>
+              <div class="taste-bar-bg"><div class="taste-bar-fill" id="barCreamy" style="width: 85%;"></div></div>
+              <span class="taste-val-text" id="valCreamy">4.5/5</span>
+            </div>
+            <div class="taste-metric">
+              <span class="taste-metric-label">กลิ่นคั่วหอม (Aroma)</span>
+              <div class="taste-bar-bg"><div class="taste-bar-fill" id="barAroma" style="width: 70%;"></div></div>
+              <span class="taste-val-text" id="valAroma">3.5/5</span>
+            </div>
+            <div class="taste-metric">
+              <span class="taste-metric-label">ความแน่นบอดี้ (Body)</span>
+              <div class="taste-bar-bg"><div class="taste-bar-fill" id="barBody" style="width: 80%;"></div></div>
+              <span class="taste-val-text" id="valBody">4/5</span>
+            </div>
           </div>
         </div>
 
@@ -462,6 +493,88 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- 7-Eleven Chiller Shelf Simulator (Google Stitch UI Feature) -->
+  <section id="shelf" class="section" style="background: rgba(15, 23, 42, 0.65);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Retail Visibility Analysis</div>
+        <h2 class="section-title">การวางจำหน่ายบนตู้แช่ 7-Eleven (Chiller Shelf Simulation)</h2>
+        <p class="section-desc">
+          การออกแบบขนาดและสีสันที่โดดเด่นสะดุดตาเหนือคู่แข่งนมโอ๊ตและนมถั่วเหลืองในตู้แช่ร้านสะดวกซื้อ 14,000 แห่งทั่วประเทศ
+        </p>
+      </div>
+
+      <div class="shelf-simulation-wrapper">
+        <div class="shelf-glow-strip"></div>
+        <div class="shelf-header-tag">
+          <div style="font-family: var(--font-heading); font-weight: 700; color: #38BDF8; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+            <span>❄️ 7-ELEVEN BEVERAGE CHILLER (ชั้นวางเครื่องดื่มนมเพื่อสุขภาพ 4°C)</span>
+          </div>
+          <div style="font-size: 0.8rem; color: #94A3B8;">Eye-Level Impact: <strong style="color: #FCD34D;">+350% Impulse Buying</strong></div>
+        </div>
+
+        <div class="shelf-products-row">
+          <div class="shelf-rack-line"></div>
+          
+          <div class="shelf-item competitor">
+            <div class="shelf-bottle-mock">
+              <span>Lactasoy</span>
+              <span style="font-size: 0.6rem; color: #CBD5E1;">250ml</span>
+            </div>
+            <div class="shelf-price-badge">12฿</div>
+          </div>
+
+          <div class="shelf-item competitor">
+            <div class="shelf-bottle-mock">
+              <span>Vitamilk</span>
+              <span style="font-size: 0.6rem; color: #CBD5E1;">300ml</span>
+            </div>
+            <div class="shelf-price-badge">15฿</div>
+          </div>
+
+          <div class="shelf-item hero-ichitan" id="shelfHeroItem">
+            <div style="position: absolute; top: -28px; background: #FF6B00; color: #FFF; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 9999px; letter-spacing: 0.5px; box-shadow: 0 0 10px rgba(255,107,0,0.6);">
+              🔥 BEST VALUE
+            </div>
+            <div class="shelf-bottle-mock">
+              <span style="font-size: 0.65rem; color: #8B5A2B;">ICHITAN</span>
+              <span style="font-size: 0.95rem; font-weight: 800; color: #3B2610;">DAILY OAT</span>
+              <span style="font-size: 0.6rem; color: #634320; margin-top: 4px;">200ml</span>
+            </div>
+            <div class="shelf-price-badge">20฿</div>
+          </div>
+
+          <div class="shelf-item competitor">
+            <div class="shelf-bottle-mock">
+              <span>Goodmate</span>
+              <span style="font-size: 0.6rem; color: #CBD5E1;">180ml</span>
+            </div>
+            <div class="shelf-price-badge">30฿</div>
+          </div>
+
+          <div class="shelf-item competitor">
+            <div class="shelf-bottle-mock">
+              <span>137 Degrees</span>
+              <span style="font-size: 0.6rem; color: #CBD5E1;">180ml</span>
+            </div>
+            <div class="shelf-price-badge">32฿</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 1.25rem; flex-wrap: wrap; gap: 10px;">
+          <div style="font-size: 0.85rem; color: var(--text-muted); max-width: 600px;">
+            💡 <strong>ทำไมอิชิตันถึงขายดีกว่า:</strong> บนตู้แช่เดียวกัน ลูกค้าเห็นนมโอ๊ตแท้ในราคาเพียง 20 บาท เทียบกับนมถั่วเหลือง 12-15 บาท และถูกกว่านมโอ๊ตอื่นที่ 30-32 บาท จะเกิดการสลับแบรนด์ (Brand Switching) ทันที
+          </div>
+          <div>
+            <button class="btn btn-outline" id="shelfPulseBtn" style="padding: 8px 16px; font-size: 0.85rem;">
+              ✨ ทดลองเอฟเฟกต์ดึงดูดสายตา
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -823,6 +936,32 @@
       </div>
     </div>
   </footer>
+
+  <!-- Google Stitch UI: Floating Executive Controller & Theme Switcher -->
+  <aside class="floating-controller" aria-label="Executive Controls">
+    <button class="floating-btn active" id="themeDarkBtn" title="Theme: Obsidian Boardroom">
+      <span>🌑 Dark Luxury</span>
+    </button>
+    <button class="floating-btn" id="themeOatBtn" title="Theme: Warm Oat Cream">
+      <span>🌾 Golden Oat</span>
+    </button>
+    <button class="floating-btn" id="themeMatchaBtn" title="Theme: Tokyo Green Matcha">
+      <span>🍵 Kyoto Tea</span>
+    </button>
+    <span style="color: rgba(255,255,255,0.2);">|</span>
+    <a href="#simulator" class="floating-btn" style="text-decoration: none;">
+      <span>💰 Simulator</span>
+    </a>
+    <button class="floating-btn" id="quickShareBtn">
+      <span>🔗 Share URL</span>
+    </button>
+  </aside>
+
+  <!-- Interactive Toast Notification -->
+  <div id="stitchToast" class="stitch-toast">
+    <span id="toastIcon">✨</span>
+    <span id="toastMsg">บันทึกข้อมูลเรียบร้อยแล้ว</span>
+  </div>
 
   <!-- Scripts -->
   <script src="script.js"></script>
