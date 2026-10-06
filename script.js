@@ -138,6 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
     heroPackBadges.innerHTML = f.badges;
     heroPackPrice.textContent = f.price;
     flavorActiveName.textContent = f.fullName;
+    if (heroPhotoImg && flavorPhotos[flavorKey]) {
+      heroPhotoImg.src = flavorPhotos[flavorKey];
+    }
 
     if (f.sensory) {
       const barSweet = document.getElementById('barSweet');
@@ -192,6 +195,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Studio Photo vs 3D Interactive Mode Toggle
+  const view3dBtn = document.getElementById('view3dBtn');
+  const viewPhotoBtn = document.getElementById('viewPhotoBtn');
+  const heroPhotoStage = document.getElementById('heroPhotoStage');
+  const heroPhotoImg = document.getElementById('heroPhotoImg');
+
+  const flavorPhotos = {
+    plain: 'assets/generated/daily-oat.jpg',
+    creamy: 'assets/generated/daily-oat.jpg',
+    matcha: 'assets/generated/oat-tea-lab.jpg',
+    hojicha: 'assets/generated/oat-tea-lab.jpg',
+    choco: 'assets/generated/oat-pop.jpg'
+  };
+
+  if (view3dBtn && viewPhotoBtn && heroPhotoStage) {
+    view3dBtn.addEventListener('click', () => {
+      view3dBtn.classList.add('active');
+      viewPhotoBtn.classList.remove('active');
+      heroPhotoStage.style.display = 'none';
+      if (heroPack3d) heroPack3d.style.display = 'block';
+      playUiSound('pop');
+      showToast('สลับสู่โหมด 3D Interactive Simulation', '🧊');
+    });
+
+    viewPhotoBtn.addEventListener('click', () => {
+      viewPhotoBtn.classList.add('active');
+      view3dBtn.classList.remove('active');
+      heroPhotoStage.style.display = 'block';
+      if (heroPack3d) heroPack3d.style.display = 'none';
+      playUiSound('chime');
+      showToast('สลับสู่โหมดภาพถ่าย Commercial Studio Shoot', '📸');
+    });
+  }
 
   // ==========================================
   // 2. CONCEPT TABS NAVIGATION
@@ -726,6 +762,9 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSlide--;
         renderSlide(currentSlide);
       }
+    }
+  });
+
   // ==========================================
   // 7. GOOGLE STITCH UI: SOUND & THEME SYSTEM
   // ==========================================
@@ -775,26 +814,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Theme Switcher Handlers
+  // Theme Switcher Handlers (Floating bar + Navbar pills)
   const themeDarkBtn = document.getElementById('themeDarkBtn');
   const themeOatBtn = document.getElementById('themeOatBtn');
   const themeMatchaBtn = document.getElementById('themeMatchaBtn');
-  const themeBtns = [themeDarkBtn, themeOatBtn, themeMatchaBtn].filter(Boolean);
+  const navThemeDarkBtn = document.getElementById('navThemeDarkBtn');
+  const navThemeOatBtn = document.getElementById('navThemeOatBtn');
+  const navThemeMatchaBtn = document.getElementById('navThemeMatchaBtn');
 
-  function setActiveTheme(themeName, activeBtn) {
+  const themeBtns = [themeDarkBtn, themeOatBtn, themeMatchaBtn, navThemeDarkBtn, navThemeOatBtn, navThemeMatchaBtn].filter(Boolean);
+
+  function setActiveTheme(themeName) {
     document.body.classList.remove('theme-oat', 'theme-matcha');
     if (themeName !== 'dark') {
       document.body.classList.add(`theme-${themeName}`);
     }
-    themeBtns.forEach(btn => btn.classList.remove('active'));
-    if (activeBtn) activeBtn.classList.add('active');
+
+    // Toggle active classes
+    [themeDarkBtn, navThemeDarkBtn].forEach(b => b && b.classList.toggle('active', themeName === 'dark'));
+    [themeOatBtn, navThemeOatBtn].forEach(b => b && b.classList.toggle('active', themeName === 'oat'));
+    [themeMatchaBtn, navThemeMatchaBtn].forEach(b => b && b.classList.toggle('active', themeName === 'matcha'));
+
+    const themeLabels = {
+      dark: '🌑 Dark Luxury (บอร์ดรูมพรีเมียม)',
+      oat: '🌾 Golden Oat (มู้ดคลีนธรรมชาติ)',
+      matcha: '🍵 Kyoto Matcha (มู้ดชาเขียวสดชื่น)'
+    };
+
     playUiSound('click');
-    showToast(`เปลี่ยนธีม: ${activeBtn.textContent.trim()}`, '🎨');
+    showToast(`เปลี่ยนธีม: ${themeLabels[themeName] || themeName}`, '🎨');
   }
 
-  if (themeDarkBtn) themeDarkBtn.addEventListener('click', () => setActiveTheme('dark', themeDarkBtn));
-  if (themeOatBtn) themeOatBtn.addEventListener('click', () => setActiveTheme('oat', themeOatBtn));
-  if (themeMatchaBtn) themeMatchaBtn.addEventListener('click', () => setActiveTheme('matcha', themeMatchaBtn));
+  if (themeDarkBtn) themeDarkBtn.addEventListener('click', () => setActiveTheme('dark'));
+  if (themeOatBtn) themeOatBtn.addEventListener('click', () => setActiveTheme('oat'));
+  if (themeMatchaBtn) themeMatchaBtn.addEventListener('click', () => setActiveTheme('matcha'));
+
+  if (navThemeDarkBtn) navThemeDarkBtn.addEventListener('click', () => setActiveTheme('dark'));
+  if (navThemeOatBtn) navThemeOatBtn.addEventListener('click', () => setActiveTheme('oat'));
+  if (navThemeMatchaBtn) navThemeMatchaBtn.addEventListener('click', () => setActiveTheme('matcha'));
 
   // Quick Share Button
   const quickShareBtn = document.getElementById('quickShareBtn');

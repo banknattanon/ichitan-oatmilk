@@ -1001,25 +1001,64 @@ h1, h2, h3, h4, h5, h6 {
 body.theme-oat {
   --bg-primary: #1C1917;
   --bg-secondary: #292524;
-  --bg-card: rgba(41, 37, 36, 0.75);
+  --bg-card: rgba(41, 37, 36, 0.85);
+  --bg-card-hover: rgba(68, 64, 60, 0.9);
   --accent-gold: #F59E0B;
   --accent-gold-light: #FDE68A;
+  --accent-gold-dark: #D97706;
+  --accent-ichitan-orange: #EA580C;
+  --border-subtle: rgba(245, 158, 11, 0.2);
+  --border-gold: rgba(245, 158, 11, 0.4);
+  --shadow-glow-gold: 0 0 35px rgba(245, 158, 11, 0.25);
+  background-color: #1C1917 !important;
   background-image: 
-    radial-gradient(circle at 15% 20%, rgba(245, 158, 11, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 85% 70%, rgba(217, 119, 6, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 15% 20%, rgba(245, 158, 11, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 85% 70%, rgba(217, 119, 6, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(120, 53, 15, 0.08) 0%, transparent 60%) !important;
+}
+
+body.theme-oat .navbar,
+body.theme-oat .hero-visual-card,
+body.theme-oat .floating-controller,
+body.theme-oat .kpi-board,
+body.theme-oat .market-table-card,
+body.theme-oat .simulator-controls-card,
+body.theme-oat .simulator-summary-card,
+body.theme-oat .voting-section {
+  background: rgba(41, 37, 36, 0.88) !important;
+  border-color: rgba(245, 158, 11, 0.25) !important;
 }
 
 /* Theme: Tokyo Matcha Cyber */
 body.theme-matcha {
   --bg-primary: #061A14;
   --bg-secondary: #0B291F;
-  --bg-card: rgba(11, 41, 31, 0.75);
+  --bg-card: rgba(11, 41, 31, 0.85);
+  --bg-card-hover: rgba(18, 65, 49, 0.9);
   --accent-gold: #10B981;
   --accent-gold-light: #6EE7B7;
+  --accent-gold-dark: #047857;
   --accent-ichitan-orange: #34D399;
+  --border-subtle: rgba(16, 185, 129, 0.25);
+  --border-gold: rgba(16, 185, 129, 0.4);
+  --shadow-glow-gold: 0 0 35px rgba(16, 185, 129, 0.25);
+  background-color: #061A14 !important;
   background-image: 
-    radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 45%),
-    radial-gradient(circle at 85% 70%, rgba(5, 150, 105, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 45%),
+    radial-gradient(circle at 85% 70%, rgba(5, 150, 105, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.08) 0%, transparent 60%) !important;
+}
+
+body.theme-matcha .navbar,
+body.theme-matcha .hero-visual-card,
+body.theme-matcha .floating-controller,
+body.theme-matcha .kpi-board,
+body.theme-matcha .market-table-card,
+body.theme-matcha .simulator-controls-card,
+body.theme-matcha .simulator-summary-card,
+body.theme-matcha .voting-section {
+  background: rgba(11, 41, 31, 0.88) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
 }
 
 /* Sound Effect Button */
